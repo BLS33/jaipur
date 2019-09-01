@@ -1,0 +1,24 @@
+Package: jaipur
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Anton Thielmann, Brandon Schwab
+Maintainer: Anton Thielmann <Anton.Thielmann@stud.uni-goettingen.de>
+Description: Jaipur is a card game for two players. 
+    It was created by Sébastien Pauchon in 2009 and published by Asmodee.
+    Players assume the roles of merchants in Jaipur, the capital of Rajasthan.
+    The aim is to receive two "seals of excellence" and be invited to the court of the Maharaja. 
+Encoding: UTF-8
+License: GPL-2
+LazyData: true
+Imports: 
+    shiny (>= 1.3.2),
+    shinyalert (>= 1.0),
+    shinyBS (>= 0.61),
+    shinyjs (>= 1.0),
+    shinythemes (>= 1.1.2),
+    shinyWidgets (>= 0.4.8),
+    plotrix (>= 3.7-6),
+    DT (>= 0.8),
+    V8 (>= 2.3)
+RoxygenNote: 6.1.1
