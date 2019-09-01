@@ -1,7 +1,7 @@
 Package: jaipur
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Title: Jaipur card game
+Version: 1.0
 Author: Anton Thielmann, Brandon Schwab
 Maintainer: Anton Thielmann <Anton.Thielmann@stud.uni-goettingen.de>
 Description: Jaipur is a card game for two players. 

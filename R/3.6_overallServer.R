@@ -12,7 +12,7 @@ server <- function(input, output, session) {
       size = "l"
     )
   )
-  
+
   # Define playing cards inside serverfunction for reactivity
   cards <- reactiveValues(
     # put Count to 1 - count is requiered for updating tabsetPanels
@@ -57,7 +57,7 @@ server <- function(input, output, session) {
     # Define a variable for textoutput which prints the player's last action
     action = "hi"
   )
-  
+
   # Set up the cards when clicking on 'Lets Play'
   observeEvent(input$start, {
     # Set_up Module gets called, fills up the market and gives
@@ -76,7 +76,7 @@ server <- function(input, output, session) {
   callModule(taking_server, 'jaipur', cards, parent_session = session)
   callModule(swapping_server, 'jaipur', cards, parent_session = session)
   callModule(selling_server, 'jaipur', cards, parent_session = session)
-  
+
   # Move on to next player after seperating Panel
   observeEvent(input$continue, {
     # Count gets increased
@@ -87,25 +87,25 @@ server <- function(input, output, session) {
       hideTab(inputId = "inTabset", target = "Player 1")
       showTab(inputId = "inTabset", target = "Player 2")
       updateTabsetPanel(session = session, "inTabset", selected = "Player 2")
-      
+
     } else{
       hideTab(inputId = "inTabset", target = "Player 2")
       showTab(inputId = "inTabset", target = "Player 1")
       updateTabsetPanel(session = session, "inTabset", selected = "Player 1")
-      
+
     }
     # End the Game when Players click on 'Continue' if there are no cards left,
     # or when 3 of the tokens are sold out
     game_over_cards(input, output, cards)
-    
+
     game_over_tokens(input, output, cards)
   })
-  
+
   # Print the Player's last action
   output$opponents_action <- renderText({
     paste(cards$action)
   })
-  
+
   # Restart the game when clicking on restart
   observeEvent(input$restart, {
     js$reset()
@@ -113,4 +113,5 @@ server <- function(input, output, session) {
 }
 
 # Run the App
+
 shinyApp(ui = ui, server = server)
