@@ -1,7 +1,8 @@
 #' @import shiny
-start_jaipur <- function(){
+start_jaipur <- function(name){
   shinyalert::useShinyalert()
   shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
+  print("hello", name)
 }
 
 #### color player 1's hand ###
