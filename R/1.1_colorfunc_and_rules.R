@@ -1,8 +1,12 @@
 #' @import shiny
-start_jaipur <- function(name){
+#' 
+#' @export start_jaipur
+start_jaipur <- function(){
   shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
 }
 
+### use shinyalert and welcome the Players
+#' @export set_up_jaipur
 set_up_jaipur <- function(){
   shinyalert::useShinyalert()
   print("Hello Players")
