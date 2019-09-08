@@ -2,6 +2,7 @@
 jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
 
 # Creating sidebarmodule
+#' @export sidebarUI
 sidebarUI <- function(id) {
   # defining namespace
   ns <- NS(id)

@@ -15,7 +15,7 @@ game_over_cards <- function(input, output, cards) {
       }
     }
     # Successmessage
-    shinyalert(
+    shinyalert::shinyalert(
       title = "GAME OVER",
       text = HTML(
         paste(
@@ -52,6 +52,7 @@ game_over_cards <- function(input, output, cards) {
 }
 
 # Function for ending the game if 3 tokens are empty
+#' @export game_over_tokens
 game_over_tokens <- function(input, output, cards) {
   # End game if 3 tokens are empty
   if (((sum(is.na(cards$tokens[1, ]))) >= 3) == TRUE) {
@@ -68,7 +69,7 @@ game_over_tokens <- function(input, output, cards) {
       }
     }
     # Successmessage
-    shinyalert(
+    shinyalert::shinyalert(
       title = "GAME OVER",
       text = HTML(
         paste(

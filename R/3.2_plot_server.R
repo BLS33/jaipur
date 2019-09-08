@@ -1,4 +1,5 @@
 # Module for plots of Market and Player's hands
+#' @export plot_server
 plot_server <- function(input, output, session, cards) {
   # Create a List for position of textboxes for plot of Player's hands
   plot_position_hands <- list(c(0, 1.5),
@@ -8,23 +9,24 @@ plot_server <- function(input, output, session, cards) {
                               c(8, 9.5),
                               c(10, 11.5),
                               c(12, 13.5))
-  
+
   # plot player 1's hand
-    output$plot_player_1 <- renderPlot({
-      plot(
-        1,
-        type = "n",
-        xlab = "",
-        ylab = "",
-        axes = FALSE,
-        xlim = c(0, 14),
-        ylim = c(0, 1),
-        main = "Hand Player 1"
-      )
-      
-      # Create textboxes for the plot
+  output$plot_player_1 <- renderPlot({
+    graphics::plot(
+      1,
+      type = "n",
+      xlab = "",
+      ylab = "",
+      axes = FALSE,
+      xlim = c(0, 14),
+      ylim = c(0, 1),
+      main = "Hand Player 1"
+    )
+
+    # Create textboxes for the plot
+    if (length(cards$hands[[1]] > 0)) {
       for (i in 1:length(cards$hands[[1]])) {
-        textbox(
+        plotrix::textbox(
           # Loop over plot_position vector which gives position of textboxes
           plot_position_hands[[i]],
           0.85,
@@ -36,11 +38,12 @@ plot_server <- function(input, output, session, cards) {
           adj = c(0, 3.8)
         )
       }
+    }
   })
-  
+
   # plot player 2's hand
   output$plot_player_2 <- renderPlot({
-    plot(
+    graphics::plot(
       1,
       type = "n",
       xlab = "",
@@ -50,23 +53,25 @@ plot_server <- function(input, output, session, cards) {
       ylim = c(0, 1),
       main = "Hand Player 2"
     )
-    
+
     # Create textboxes for the plot
-    for (i in 1:length(cards$hands[[2]])) {
-      textbox(
-        # Loop over plot_position vector which gives position of textboxes
-        plot_position_hands[[i]],
-        0.85,
-        cards$hands[[2]][i],
-        justify = "c",
-        fill = color_func_jaipur(cards$hands[[2]])[i],
-        cex = 1.2,
-        leading = 8,
-        adj = c(0, 3.8)
-      )
+    if (length(cards$hands[[2]] > 0)) {
+      for (i in 1:length(cards$hands[[2]])) {
+        plotrix::textbox(
+          # Loop over plot_position vector which gives position of textboxes
+          plot_position_hands[[i]],
+          0.85,
+          cards$hands[[2]][i],
+          justify = "c",
+          fill = color_func_jaipur(cards$hands[[2]])[i],
+          cex = 1.2,
+          leading = 8,
+          adj = c(0, 3.8)
+        )
+      }
     }
   })
-  
+
   # Define position of market plot
   plot_position_market <- list(c(0, 1.8),
                                c(2, 3.8),
@@ -75,7 +80,7 @@ plot_server <- function(input, output, session, cards) {
                                c(8, 9.8))
   # Create plot
   output$marketplot <- renderPlot({
-    plot(
+    graphics::plot(
       1,
       type = "n",
       xlab = "",
@@ -85,9 +90,9 @@ plot_server <- function(input, output, session, cards) {
       ylim = c(0, 1),
       main = "MARKET"
     )
-    
+
     for (i in 1:length(cards$market)) {
-      textbox(
+      plotrix::textbox(
         # Loop over plot_position vector which gives position of textboxes
         plot_position_market[[i]],
         0.85,

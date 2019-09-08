@@ -1,4 +1,5 @@
-# Output module for textoutputs as Camels and deck and Tokens 
+# Output module for textoutputs as Camels and deck and Tokens
+#' @export output_server
 output_server <- function(input, output, server, cards) {
   # output for number of Camels of Player 1
   output$camels_player_1 <- renderPrint({
@@ -16,7 +17,7 @@ output_server <- function(input, output, server, cards) {
   output$Tokens <- renderTable({
     (cards$tokens)
     })
-  
-  
+
+
 }
 

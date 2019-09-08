@@ -1,4 +1,5 @@
 # Overall Server which calls defined modules
+#' @export server
 server <- function(input, output, session) {
   # Show the Rules of the Game with a 'setup' button which sets up the Game
   showModal(
@@ -6,7 +7,7 @@ server <- function(input, output, session) {
       title = "Jaipur Rules",
       HTML(rules),
       footer = modalButton("Let's Play"),
-      actionBttn(inputId = "start",
+      shinyWidgets::actionBttn(inputId = "start",
                  label = "Set up the Game"),
       easyClose = TRUE,
       size = "l"
@@ -14,7 +15,7 @@ server <- function(input, output, session) {
   )
 
   # Define playing cards inside serverfunction for reactivity
-  cards <- reactiveValues(
+  cards <- shiny::reactiveValues(
     # put Count to 1 - count is requiered for updating tabsetPanels
     count = 1,
     # Define the deck with only 8 Camels, as 3 Camels are on market
@@ -113,5 +114,5 @@ server <- function(input, output, session) {
 }
 
 # Run the App
-
-shinyApp(ui = ui, server = server)
+#' @export start_jaipur
+start_jaipur <- shinyApp(ui = ui, server = server)

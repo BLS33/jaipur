@@ -1,5 +1,6 @@
 # Overall UI which integrates moduleUI's
-ui <- fluidPage(useShinyalert(),
+#' @export ui
+ui <- fluidPage(shinyalert::useShinyalert(),
                 # Sidebar layout with input and output definitions
                 sidebarLayout(
                   # Sidebar panel for Market, Tokens and Camels
@@ -7,10 +8,10 @@ ui <- fluidPage(useShinyalert(),
                     # Call the defined sidebarUI
                     sidebarUI('jaipur'),
                     # integrate Code for restarting the Game
-                    useShinyjs(),
-                    extendShinyjs(text = jsResetCode),
+                    shinyjs::useShinyjs(),
+                    shinyjs::extendShinyjs(text = jsResetCode),
                     # Actionbutton for restarting the Game
-                    actionBttn(inputId = "restart",
+                    shinyWidgets::actionBttn(inputId = "restart",
                                label = "Restart")
                   ),
                   # MainPanel with Player's Panels

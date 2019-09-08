@@ -1,4 +1,5 @@
 # Creat UI for Player 1
+#' @export player1_UI
 player1_UI <- function(id) {
   # define Namespace
   ns <- NS(id)
@@ -14,7 +15,7 @@ player1_UI <- function(id) {
     br(),
     br(),
     br(),
-    
+
     # Actionbutton to take cards
     actionButton(ns("take_player_1"),
                  label = "TAKE"),
@@ -32,10 +33,11 @@ player1_UI <- function(id) {
     helpText("Number of Camels - Player 1"),
     verbatimTextOutput(ns("camels_player_1"))
   )
-  
+
 }
 
 # Creat UI for Player 2 seperately as Id's have to be unique
+#' @export player2_UI
 player2_UI <- function(id) {
   # define Namespace
   ns <- NS(id)
@@ -51,7 +53,7 @@ player2_UI <- function(id) {
     br(),
     br(),
     br(),
-    
+
     # Actionbutton to take cards
     actionButton(ns("take_player_2"),
                  label = "TAKE"),
@@ -69,5 +71,5 @@ player2_UI <- function(id) {
     helpText("Number of Camels - Player 2"),
     verbatimTextOutput(ns("camels_player_2"))
   )
-  
+
 }

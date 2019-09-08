@@ -1,4 +1,5 @@
 # Function for taking cards - 'number' identifies Player
+#' @export selling
 selling <- function(input, output, cards, number, parent_session) {
 
   # Create list with input for easier access
@@ -8,7 +9,7 @@ selling <- function(input, output, cards, number, parent_session) {
   # Make sure the player's can only sell one type of Good
   if (all(vals[[number]][1] == vals[[number]]) == FALSE) {
     # Errormessage if they try otherwise
-    shinyalert(
+    shinyalert::shinyalert(
       title = "Error",
       text = HTML(
         "You can only sell one type of Good"
@@ -30,7 +31,7 @@ selling <- function(input, output, cards, number, parent_session) {
          vals[[number]][1] == "Diamond") &
         length(vals[[number]]) == 1) {
       # Errormessage if they try to sell 1 of Gold/Diamonds/Silver
-      shinyalert(
+      shinyalert::shinyalert(
         title = "Error",
         text = HTML(
           "You have to sell more than 1 <br>
@@ -49,7 +50,7 @@ selling <- function(input, output, cards, number, parent_session) {
       # If the Good is already sold out the Player's can't sell it anymore
       if (any(is.na(cards$tokens[1:length(vals[[number]]),
                                  vals[[number]]])) == TRUE) {
-        shinyalert(
+        shinyalert::shinyalert(
           title = "Error",
           text = "Sold out",
           html = TRUE,
@@ -101,7 +102,7 @@ selling <- function(input, output, cards, number, parent_session) {
           }
         }
         # Success message that the sale was successfull
-        shinyalert(
+        shinyalert::shinyalert(
           title = "Success",
           text = HTML(
             "Your sale was successful, <br>  now it is Player",

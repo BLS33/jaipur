@@ -1,17 +1,18 @@
 # 'number' is given for the players number
+#' @export swapping
 swapping <- function(input, output, cards, number, parent_session) {
-  
+
   # Create list that capture the player's input
   # with 'number' we can access the desired player (...)[[number]]
   vals <- list(c(input$hand_player_1),
                c(input$hand_player_2))
-  
+
   mar <- list(c(input$market_player_1),
               c(input$market_player_2))
-  
+
   # Make sure the Players cannot swap Camels
   if (any(mar[[number]] == "Camel")) {
-    shinyalert(
+    shinyalert::shinyalert(
       title = "Error",
       text = "You cannot swap for Camels",
       html = TRUE,
@@ -26,7 +27,7 @@ swapping <- function(input, output, cards, number, parent_session) {
   } else{
     # Make sure Players can only swap card by card
     if (length(vals[[number]]) != length(mar[[number]])) {
-      shinyalert(
+      shinyalert::shinyalert(
         title = "Error",
         text = "You have to swap card by card",
         html = TRUE,
@@ -41,7 +42,7 @@ swapping <- function(input, output, cards, number, parent_session) {
     } else{
       # Make sure Players have to swap at least 2 Cards
       if (length(vals[[number]]) < 2) {
-        shinyalert(
+        shinyalert::shinyalert(
           title = "Error",
           text = "You have to swap at least 2 Cards",
           html = TRUE,
@@ -58,13 +59,13 @@ swapping <- function(input, output, cards, number, parent_session) {
         # Players Hands accordingly
         cards$market[which(cards$market %in% mar[[number]])
                      [1:length(vals[[number]])]] <- vals[[number]]
-        
+
         cards$hands[[number]][which(cards$hands[[number]] %in% vals[[number]])
                               [1:length(mar[[number]])]] <- mar[[number]]
-        # Success message 
-        shinyalert(
+        # Success message
+        shinyalert::shinyalert(
           title = "Success",
-          text = HTML(paste("Your swap was successful, <br> now it is Player", 
+          text = HTML(paste("Your swap was successful, <br> now it is Player",
                             number  %% 2 + 1,"'s turn")),
           html = TRUE,
           type = "success",
@@ -75,11 +76,11 @@ swapping <- function(input, output, cards, number, parent_session) {
           imageHeight = 400,
           animation = TRUE
         )
-        
+
         # Update the TabsetPanel, to the intermediate Panel
-        updateTabsetPanel(session = parent_session, 
+        updateTabsetPanel(session = parent_session,
                           "inTabset", selected = "Next Player")
-        
+
         cards$action <- paste("Your opponent swapped", mar[number],
                               "with", vals[number],
                               "now it is your turn")
