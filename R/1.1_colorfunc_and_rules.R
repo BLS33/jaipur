@@ -1,4 +1,5 @@
 #' @import shiny
+shinyalert::useShinyalert()
 
 #### color player 1's hand ###
 #' @export color_func_jaipur
