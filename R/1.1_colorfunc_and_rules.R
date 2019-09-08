@@ -8,7 +8,6 @@ start_jaipur <- function(){
 ### use shinyalert and welcome the Players
 #' @export set_up_jaipur
 set_up_jaipur <- function(){
-  shinyalert::useShinyalert()
   print("Hello Players")
 }
 
