@@ -1,12 +1,7 @@
-# Call al necessary libraries
-library(shiny)
-library(shinyalert)
-library(shinyWidgets)
-library(shinyBS)
-library(shinyjs)
-library(plotrix)
-library(DT)
-# color player 1's hand ###
+#' @import shiny
+
+#### color player 1's hand ###
+#' @export color_func_jaipur
 color_func_jaipur <- function(x) {
   card_color <- rep(NA, length(x))
 
