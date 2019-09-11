@@ -109,7 +109,7 @@ server <- function(input, output, session) {
 
   # Restart the game when clicking on restart
   observeEvent(input$restart, {
-    js$reset()
+    session$reload()
   })
 }
 
