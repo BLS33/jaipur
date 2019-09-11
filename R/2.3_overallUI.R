@@ -12,7 +12,18 @@ ui <- fluidPage(shinyalert::useShinyalert(),
                     shinyjs::extendShinyjs(text = jsResetCode),
                     # Actionbutton for restarting the Game
                     shinyWidgets::actionBttn(inputId = "restart",
-                               label = "Restart")
+                               label = "Restart"),
+
+
+                    tags$a(
+                      href = "javascript:history.go(0)",
+                      popify(
+                        tags$i(class = "fa fa-refresh fa-5x"),
+                        title = "Reload",
+                        content = "Click here to restart the Shiny session",
+                        placement = "right"
+                      )
+                    )
                   ),
                   # MainPanel with Player's Panels
                   mainPanel(
