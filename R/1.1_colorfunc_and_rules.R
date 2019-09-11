@@ -1,16 +1,10 @@
 #' @import shiny
-#' 
+#'
 #' @export start_jaipur
 start_jaipur <- function(){
   shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
 }
 
-### use shinyalert and welcome the Players
-#' @export set_up_jaipur
-set_up_jaipur <- function(name1){
-  useShinyalert()
-  return(print(name1))
-}
 
 #### color player 1's hand ###
 #' @export color_func_jaipur
