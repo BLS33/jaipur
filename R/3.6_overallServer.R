@@ -47,8 +47,8 @@ server <- function(input, output, session) {
     # Define the market - first with 3 Camels
     market = c("Camel", "Camel", "Camel"),
     # Define Hand of Player 1
-    hands = list(hand_player_1 = c(),
-                 hand_player_2 = c()),
+    hands = list(hand_player_1 = character(0),
+                 hand_player_2 = ccharacter(0)),
     # Define Number of Camels of Player 1
     camels = list(camels_player_1 = 0,
                   camels_player_2 = 0),
