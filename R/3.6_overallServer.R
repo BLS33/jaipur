@@ -113,12 +113,7 @@ server <- function(input, output, session) {
   })
 }
 
-#' Start the Game JAIPUR
-#'
-#' \code{start_jaipur} uses the shinyApp to start the Game
-#'
-#' @param none
-#' @return none
+
 #' @export start_jaipur
 start_jaipur <- function(){
   shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
