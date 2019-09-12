@@ -4,11 +4,16 @@
 \alias{start_jaipur}
 \title{Start the Game Jaipur}
 \usage{
-start_jaipur()
+start_jaipur(x)
 }
 \arguments{
-\item{X}{numeric}
+\item{x}{TRUE or FALSE. If TRUE the app will start in your default Browser.
+If FALSE the app will start in the R Browser}
 }
 \description{
-More detailed description
+Jaipur is a two player card game.
+}
+\note{
+For more FUN while playing call shinyalert::useShinyalert()
+in your console
 }

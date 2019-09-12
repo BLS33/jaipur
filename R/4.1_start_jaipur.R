@@ -1,13 +1,16 @@
 #' Start the Game Jaipur
 #'
-#' More detailed description
+#' Jaipur is a two player card game.
 #'
-#' @param X numeric
+#' @param x TRUE or FALSE. If TRUE the app will start in your default Browser.
+#' If FALSE the app will start in the R Browser
 #'
-#' @example
-#' bmi(32)
+#'
+#' @note  For more FUN while playing call shinyalert::useShinyalert()
+#' in your console
 #'
 #' @export start_jaipur
-start_jaipur <- function(){
-  shiny::shinyApp(ui = jaipur_ui, server = jaipur_server)
+start_jaipur <- function(x){
+  shiny::shinyApp(ui = jaipur_ui, server = jaipur_server,
+                  options = list(launch.browser = x))
 }
