@@ -4,11 +4,7 @@
 \alias{start_jaipur}
 \title{Start the Game Jaipur}
 \usage{
-start_jaipur(x)
-}
-\arguments{
-\item{x}{TRUE or FALSE. If TRUE the app will start in your default Browser.
-If FALSE the app will start in the R Browser}
+start_jaipur()
 }
 \description{
 Jaipur is a two player card game.
