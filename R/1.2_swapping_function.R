@@ -2,7 +2,6 @@
 
 #' @keywords internal swapping
 swapping <- function(input, output, cards, number, parent_session) {
-
   # Create list that capture the player's input
   # with 'number' we can access the desired player (...)[[number]]
   vals <- list(c(input$hand_player_1),
@@ -62,12 +61,19 @@ swapping <- function(input, output, cards, number, parent_session) {
                      [1:length(vals[[number]])]] <- vals[[number]]
 
         cards$hands[[number]][which(cards$hands[[number]] %in% vals[[number]])
-                              [1:length(mar[[number]])]] <- mar[[number]]
+                              [1:length(mar[[number]])]] <-
+          mar[[number]]
+
         # Success message
         shinyalert::shinyalert(
           title = "Success",
-          text = HTML(paste("Your swap was successful, <br> now it is Player",
-                            number  %% 2 + 1,"'s turn")),
+          text = HTML(
+            paste(
+              "Your swap was successful, <br> now it is Player",
+              number  %% 2 + 1,
+              "'s turn"
+            )
+          ),
           html = TRUE,
           type = "success",
           showConfirmButton = TRUE,
@@ -82,9 +88,18 @@ swapping <- function(input, output, cards, number, parent_session) {
         updateTabsetPanel(session = parent_session,
                           "inTabset", selected = "Next Player")
 
-        cards$action <- paste("Your opponent swapped", mar[number],
-                              "with", vals[number],
-                              "now it is your turn")
+        cards$action_text <-
+          paste("Your opponent swapped",
+                mar[number],
+                "with",
+                vals[number],
+                "now it is your turn")
+
+        # Update variables for plotting players input
+        cards$last_swap <-
+          c(input$hand_player_1, input$hand_player_2)
+        cards$last_action <-
+          c(input$market_player_1, input$market_player_2)
 
       }
     }

@@ -1,7 +1,6 @@
 # Function for taking cards - 'number' identifies Player
 #' @keywords internal selling
 selling <- function(input, output, cards, number, parent_session) {
-
   # Create list with input for easier access
   vals <- list(c(input$hand_player_1),
                c(input$hand_player_2))
@@ -11,9 +10,7 @@ selling <- function(input, output, cards, number, parent_session) {
     # Errormessage if they try otherwise
     shinyalert::shinyalert(
       title = "Error",
-      text = HTML(
-        "You can only sell one type of Good"
-      ),
+      text = HTML("You can only sell one type of Good"),
       html = TRUE,
       type = "error",
       showConfirmButton = TRUE,
@@ -63,19 +60,22 @@ selling <- function(input, output, cards, number, parent_session) {
           animation = TRUE
         )
       } else{
-        # Player's normally sell their Good - Remove sold Goods from Player's hands
+        # Player's normally sell Good -Remove sold Goods from Player's hands
         cards$hands[[number]] <-
           cards$hands[[number]][-which(cards$hands[[number]] %in% vals[[number]])
                                 [1:length(vals[[number]])]]
+
         # Add the revenues to Player's money
         cards$money[[number]] <-
           cards$money[[number]] + sum(cards$tokens[1:length(vals[[number]]),
                                                    vals[[number]][1]])
+
         # Remove the sold Goods from the Tokens
         cards$tokens[, vals[[number]][1]] <-
           cards$tokens[c((length(vals[[number]]) + 1):10,
                          rep(NA, times = length(vals[[number]]))),
                        vals[[number]][1]]
+
         # Update the TabsetPanel, to the intermediate Panel
         updateTabsetPanel(session = parent_session,
                           "inTabset", selected = "Next Player")
@@ -87,9 +87,10 @@ selling <- function(input, output, cards, number, parent_session) {
           # get extra money
           cards$money[[number]] <-
             sum(cards$money[[number]], cards$extras[1, length(vals[[number]]) - 2])
+
           # The extras get deleted proportionally
           cards$extras[which(is.na(cards$extras[, length(vals[[number]]) - 2]) == T)
-                       -1, length(vals[[number]]) - 2] <- NA
+                       - 1, length(vals[[number]]) - 2] <- NA
         } else{
           # If the Player's sell >5 Goods, they get the same extra than for
           # selling exactly 5 Goods
@@ -98,9 +99,10 @@ selling <- function(input, output, cards, number, parent_session) {
               sum(cards$money[[number]], cards$extras[[1, 3]])
 
             cards$extras[which(is.na(cards$extras[, 3]) == T)
-                         -1, length(vals[[number]]) - 2] <- NA
+                         - 1, length(vals[[number]]) - 2] <- NA
           }
         }
+
         # Success message that the sale was successfull
         shinyalert::shinyalert(
           title = "Success",
@@ -118,15 +120,20 @@ selling <- function(input, output, cards, number, parent_session) {
           imageHeight = 400,
           animation = TRUE
         )
+
         # update textOutput which is printed on intermediate Panel so
         # the opponent sees which action was taken
-        cards$action <- paste("Your opponent sold", length(vals[[number]]),
-                              vals[[number]][1],
-                              "now it is your turn")
+        cards$action_text <-
+          paste("Your opponent sold",
+                length(vals[[number]]),
+                vals[[number]][1],
+                "now it is your turn")
+
+        cards$last_swap <-
+          c(input$hand_player_1, input$hand_player_2)
+
+        cards$last_action <- c()
       }
     }
   }
 }
-
-
-

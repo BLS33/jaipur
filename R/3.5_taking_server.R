@@ -8,6 +8,7 @@ taking_server <- function(input, output, session, cards, parent_session) {
   observeEvent(input$take_player_1, {
     # For taking a Cards a marketinput is required
     req(input$market_player_1)
+
     # Call the taking function with number being equal to 1
     taking(input, output, cards, number = 1, parent_session)
 
@@ -17,6 +18,7 @@ taking_server <- function(input, output, session, cards, parent_session) {
   observeEvent(input$take_player_2, {
     # For taking a Cards a marketinput is required
     req(input$market_player_2)
+
     # Call the taking function with number being equal to 2
     taking(input, output, cards, number = 2, parent_session)
 
@@ -30,8 +32,8 @@ swapping_server <- function(input, output, session, cards, parent_session) {
   # If Player 1 swaps cards
   observeEvent(input$swap_player_1, {
     # swapping requires a market input and a hand input
-    req(input$market_player_1)
-    req(input$hand_player_1)
+    req(input$market_player_1, input$hand_player_1)
+
     # Call the swapping function with number being equal to 1
     swapping(input, output, cards, number = 1, parent_session)
 
@@ -40,8 +42,8 @@ swapping_server <- function(input, output, session, cards, parent_session) {
   # If Player 2 swaps cards
   observeEvent(input$swap_player_2, {
     # swapping requires a market input and a hand input
-    req(input$market_player_2)
-    req(input$hand_player_2)
+    req(input$market_player_2, input$hand_player_2)
+
     # Call the swapping function with number being equal to 2
     swapping(input, output, cards, number = 2, parent_session)
 
@@ -55,14 +57,17 @@ selling_server <- function(input, output, session, cards, parent_session) {
   observeEvent(input$sell_player_1, {
     # selling cards requires a hand input
     req(input$hand_player_1)
+
     # Call the selling function with number being equal to 1
     selling(input, output, cards, number = 1, parent_session)
 
   })
+
   #if Player 2 sells cards
   observeEvent(input$sell_player_2, {
     # selling cards requires a hand input
     req(input$hand_player_2)
+
     # Call the selling function with number being equal to 2
     selling(input, output, cards, number = 2, parent_session)
 

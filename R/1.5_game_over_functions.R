@@ -16,6 +16,7 @@ game_over_cards <- function(input, output, cards) {
         cards$money[[2]] <- cards$money[[1]] + 5
       }
     }
+
     # Successmessage
     shinyalert::shinyalert(
       title = "GAME OVER",
@@ -70,6 +71,7 @@ game_over_tokens <- function(input, output, cards) {
         cards$money[[2]] <- cards$money[[1]] + 5
       }
     }
+
     # Successmessage
     shinyalert::shinyalert(
       title = "GAME OVER",
