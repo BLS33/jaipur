@@ -11,6 +11,5 @@
 #'
 #' @export start_jaipur
 start_jaipur <- function(x){
-  shiny::shinyApp(ui = jaipur_ui, server = jaipur_server,
-                  options = list(launch.browser = x))
+  shiny::shinyApp(ui = jaipur_ui, server = jaipur_server)
 }
