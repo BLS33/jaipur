@@ -1,6 +1,6 @@
 # Overall UI which integrates moduleUI's
-#' @keywords internal ui
-ui <- fluidPage(shinyalert::useShinyalert(),
+#' @keywords internal jaipur_ui
+jaipur_ui <- fluidPage(shinyalert::useShinyalert(),
                 # Sidebar layout with input and output definitions
                 sidebarLayout(
                   # Sidebar panel for Market, Tokens and Camels

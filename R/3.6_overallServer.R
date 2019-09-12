@@ -1,6 +1,6 @@
 # Overall Server which calls defined modules
-#' @keywords internal server
-server <- function(input, output, session) {
+#' @keywords internal jaipur_server
+jaipur_server <- function(input, output, session) {
   # Show the Rules of the Game with a 'setup' button which sets up the Game
   showModal(
     modalDialog(
@@ -114,8 +114,5 @@ server <- function(input, output, session) {
 }
 
 
-#' @export start_jaipur
-start_jaipur <- function(){
-  shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
-}
+
 
