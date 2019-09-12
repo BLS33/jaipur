@@ -1,4 +1,6 @@
 # Function for ending the Game if all cards are taken
+
+#' @keywords internal game_over_cards
 game_over_cards <- function(input, output, cards) {
   # End game if all cards are taken
   if (length(cards$deck) == 0) {
@@ -52,7 +54,7 @@ game_over_cards <- function(input, output, cards) {
 }
 
 # Function for ending the game if 3 tokens are empty
-#' @export game_over_tokens
+#' @keywords internal game_over_tokens
 game_over_tokens <- function(input, output, cards) {
   # End game if 3 tokens are empty
   if (((sum(is.na(cards$tokens[1, ]))) >= 3) == TRUE) {

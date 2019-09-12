@@ -1,5 +1,5 @@
 # Overall UI which integrates moduleUI's
-#' @export ui
+#' @keywords internal ui
 ui <- fluidPage(shinyalert::useShinyalert(),
                 # Sidebar layout with input and output definitions
                 sidebarLayout(

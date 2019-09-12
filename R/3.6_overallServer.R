@@ -1,5 +1,5 @@
 # Overall Server which calls defined modules
-#' @export server
+#' @keywords internal server
 server <- function(input, output, session) {
   # Show the Rules of the Game with a 'setup' button which sets up the Game
   showModal(
@@ -113,5 +113,14 @@ server <- function(input, output, session) {
   })
 }
 
-shinyApp(ui, server)
+#' Start the Game JAIPUR
+#'
+#' \code{start_jaipur} uses the shinyApp to start the Game
+#'
+#' @param none
+#' @return none
+#' @export start_jaipur
+start_jaipur <- function(){
+  shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
+}
 

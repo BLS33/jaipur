@@ -1,12 +1,8 @@
 #' @import shiny
-#'
-#' @export start_jaipur
-start_jaipur <- function(){
-  shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
-}
 
 #### color player 1's hand ###
-#' @export color_func_jaipur
+
+#' @keywords internal color_func_jaipur
 color_func_jaipur <- function(x) {
   card_color <- rep(NA, length(x))
 
@@ -88,4 +84,5 @@ rules <- "You are one of the two most powerful traders in the city of Jaipur,
         <br>
         <br>
         <br>"
+
 

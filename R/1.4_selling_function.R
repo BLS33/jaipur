@@ -1,5 +1,5 @@
 # Function for taking cards - 'number' identifies Player
-#' @export selling
+#' @keywords internal selling
 selling <- function(input, output, cards, number, parent_session) {
 
   # Create list with input for easier access

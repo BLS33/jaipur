@@ -1,5 +1,5 @@
 # Creat UI for Player 1
-#' @export player1_UI
+#' @keywords internal player1_UI
 player1_UI <- function(id) {
   # define Namespace
   ns <- NS(id)
@@ -37,7 +37,7 @@ player1_UI <- function(id) {
 }
 
 # Creat UI for Player 2 seperately as Id's have to be unique
-#' @export player2_UI
+#' @keywords internal player2_UI
 player2_UI <- function(id) {
   # define Namespace
   ns <- NS(id)

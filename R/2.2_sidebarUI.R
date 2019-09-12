@@ -1,5 +1,5 @@
 # Creating sidebarmodule
-#' @export sidebarUI
+#' @keywords internal sidebarUI
 sidebarUI <- function(id) {
   # defining namespace
   ns <- NS(id)

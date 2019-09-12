@@ -1,5 +1,5 @@
 # Module for taking  cards
-#' @export taking_server
+#' @keywords internal taking_server
 taking_server <- function(input, output, session, cards, parent_session) {
   # As inputId's have to be unique we have to call the events
   # separately for the Player's
@@ -25,6 +25,7 @@ taking_server <- function(input, output, session, cards, parent_session) {
 }
 
 # Module for swapping cards
+#' @keywords internal swapping_server
 swapping_server <- function(input, output, session, cards, parent_session) {
   # If Player 1 swaps cards
   observeEvent(input$swap_player_1, {
@@ -48,7 +49,7 @@ swapping_server <- function(input, output, session, cards, parent_session) {
 }
 
 # Module for selling cards
-#' @export selling_server
+#' @keywords internal selling_server
 selling_server <- function(input, output, session, cards, parent_session) {
   # If Player 1 sells cards
   observeEvent(input$sell_player_1, {

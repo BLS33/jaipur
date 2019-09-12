@@ -1,5 +1,5 @@
 # Server function for creating the pickerinputs for player 1
-#' @export player1_tab_server
+#' @keywords internal player1_tab_server
 player1_tab_server <- function(input, output, session, cards) {
   # Pickerinput to take or swap Cards from the Market
   output$player_1 <- renderUI(tagList(
@@ -31,7 +31,7 @@ player1_tab_server <- function(input, output, session, cards) {
 
 # Server function for creating the pickerinputs for player 2 as inputId's
 # have to be unique
-#' @export player2_tab_server
+#' @keywords internal player2_tab_server
 player2_tab_server <- function(input, output, session, cards) {
   # Pickerinput to take or swap Cards from the Market
   output$player_2 <- renderUI(tagList(

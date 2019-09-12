@@ -1,5 +1,6 @@
 # 'number' is given for the players number
-#' @export swapping
+
+#' @keywords internal swapping
 swapping <- function(input, output, cards, number, parent_session) {
 
   # Create list that capture the player's input
@@ -89,4 +90,5 @@ swapping <- function(input, output, cards, number, parent_session) {
     }
   }
 }
+
 
