@@ -1,6 +1,3 @@
-# Create code for restarting the App
-jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
-
 # Creating sidebarmodule
 #' @export sidebarUI
 sidebarUI <- function(id) {

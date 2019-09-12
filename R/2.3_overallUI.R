@@ -7,9 +7,6 @@ ui <- fluidPage(shinyalert::useShinyalert(),
                   sidebarPanel(
                     # Call the defined sidebarUI
                     sidebarUI('jaipur'),
-                    # integrate Code for restarting the Game
-                    shinyjs::useShinyjs(),
-                    shinyjs::extendShinyjs(text = jsResetCode),
                     # Actionbutton for restarting the Game
                     shinyWidgets::actionBttn(inputId = "restart",
                                label = "Restart")
