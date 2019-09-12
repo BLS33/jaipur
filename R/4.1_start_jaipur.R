@@ -2,7 +2,6 @@
 #'
 #' Jaipur is a two player card game.
 #'
-#'
 #' @note  For more FUN while playing call shinyalert::useShinyalert()
 #' in your console
 #'
