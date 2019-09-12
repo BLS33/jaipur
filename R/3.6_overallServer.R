@@ -31,12 +31,12 @@ server <- function(input, output, session) {
     )),
     # Define Tokens as data.frame so the tokens can be displayed as tableOutput
     tokens = data.frame(
-      Leather = c(4, 3, 2, 1, 1, 1, 1, 1, 1, 1),
-      Spice = c(5, 3, 3, 2, 2, 1, 1, NA, NA, NA),
-      Cloth = c(5, 3, 3, 2, 2, 1, 1, NA, NA, NA),
-      Diamond = c(7, 7, 5, 5, 5, NA, NA, NA, NA, NA),
-      Gold = c(6, 6, 5, 5, 5, NA, NA, NA, NA, NA),
-      Silver = c(5, 5, 5, 5, 5, NA, NA, NA, NA, NA)
+      Leather = as.integer(c(4, 3, 2, 1, 1, 1, 1, 1, 1, 1)),
+      Spice = as.integer(c(5, 3, 3, 2, 2, 1, 1, NA, NA, NA)),
+      Cloth = as.integer(c(5, 3, 3, 2, 2, 1, 1, NA, NA, NA)),
+      Diamond = as.integer(c(7, 7, 5, 5, 5, NA, NA, NA, NA, NA)),
+      Gold = as.integer(c(6, 6, 5, 5, 5, NA, NA, NA, NA, NA)),
+      Silver = as.integer(c(5, 5, 5, 5, 5, NA, NA, NA, NA, NA))
     ),
     #Define the extras for selling more than 3 cards
     extras = data.frame(
@@ -113,6 +113,5 @@ server <- function(input, output, session) {
   })
 }
 
-# Run the App
-#' @export start_jaipur
-start_jaipur <- shinyApp(ui = ui, server = server)
+shinyApp(ui, server)
+

@@ -5,7 +5,6 @@ start_jaipur <- function(){
   shiny::shinyApp(ui = jaipur::ui, server = jaipur::server)
 }
 
-
 #### color player 1's hand ###
 #' @export color_func_jaipur
 color_func_jaipur <- function(x) {
