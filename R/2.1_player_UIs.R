@@ -1,7 +1,5 @@
 # Creat UI for Player 1
 
-#' @title player1 UI  function
-#'
 #' @keywords internal player1_UI
 player1_UI <- function(id) {
   # define Namespace

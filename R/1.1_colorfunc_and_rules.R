@@ -2,8 +2,6 @@
 
 #### color player 1's hand ###
 
-#' @title  color function
-#'
 #' @keywords internal color_func_jaipur
 color_func_jaipur <- function(x) {
   card_color <- rep(NA, length(x))

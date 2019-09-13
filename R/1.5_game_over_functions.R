@@ -1,7 +1,5 @@
 # Function for ending the Game if all cards are taken
 
-#' @title  game over function
-#'
 #' @keywords internal game_over_cards
 game_over_cards <- function(input, output, cards) {
   # End game if all cards are taken

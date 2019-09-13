@@ -1,7 +1,5 @@
 # Overall UI which integrates moduleUI's
 
-#' @title  jaipur UI function
-#'
 #' @keywords internal jaipur_ui
 jaipur_ui <- fluidPage(shinyalert::useShinyalert(),
                        # Sidebar layout with input and output definitions

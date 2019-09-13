@@ -1,7 +1,5 @@
 # Creating sidebarmodule
 
-#' @title next Player UI function
-#'
 #' @keywords internal nextPlayerUI
 nextPlayerUI <- function(id) {
   # defining namespace

@@ -1,7 +1,5 @@
 # Creating sidebarmodule
 
-#' @title sidebar UI function
-#'
 #' @keywords internal sidebarUI
 sidebarUI <- function(id) {
   # defining namespace

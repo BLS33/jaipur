@@ -1,7 +1,5 @@
 # Function for setting up the Cards
 
-#' @title Set up cards server function
-#'
 #' @keywords internal set_up_cards_server
 set_up_cards_server <- function(input, output, session, cards) {
   # market gets filled up with first two cards of the deck

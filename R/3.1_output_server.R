@@ -1,7 +1,5 @@
 # Output module for textoutputs as Camels and deck and Tokens
 
-#' @title Output server function
-#'
 #' @keywords internal output_server
 output_server <- function(input, output, server, cards) {
   # output for number of Camels of Player 1
