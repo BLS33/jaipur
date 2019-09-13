@@ -1,4 +1,7 @@
 # Module for plots of Market and Player's hands
+
+#' @title plot server function
+#'
 #' @keywords internal plot_server
 plot_server <- function(input, output, session, cards) {
   # Create a List for position of textboxes for plot of Player's hands

@@ -1,4 +1,7 @@
 # Function for taking cards - 'number' identifies Player
+
+#' @title  taking function
+#'
 #' @keywords internal taking
 taking <- function(input, output, cards, number, parent_session) {
   # Create list with input for easier access

@@ -1,4 +1,7 @@
 # Server function for creating the pickerinputs for player 1
+
+#' @title Player1 tab server function
+#'
 #' @keywords internal player1_tab_server
 player1_tab_server <- function(input, output, session, cards) {
   # Pickerinput to take or swap Cards from the Market

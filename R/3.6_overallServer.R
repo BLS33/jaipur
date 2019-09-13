@@ -1,4 +1,7 @@
 # Overall Server which calls defined modules
+
+#' @title Jaipur server function
+#'
 #' @keywords internal jaipur_server
 jaipur_server <- function(input, output, session) {
   # Show the Rules of the Game with a 'setup' button which sets up the Game

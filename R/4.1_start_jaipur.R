@@ -1,6 +1,6 @@
-#' Start the Game Jaipur
+#' @title Start the Game Jaipur
 #'
-#' Jaipur is a two player card game.
+#' @description Jaipur is a two player card game.
 #'
 #' @note  For more FUN while playing call shinyalert::useShinyalert()
 #' in your console

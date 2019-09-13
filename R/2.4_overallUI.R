@@ -1,4 +1,7 @@
 # Overall UI which integrates moduleUI's
+
+#' @title  jaipur UI function
+#'
 #' @keywords internal jaipur_ui
 jaipur_ui <- fluidPage(shinyalert::useShinyalert(),
                        # Sidebar layout with input and output definitions
@@ -34,7 +37,7 @@ jaipur_ui <- fluidPage(shinyalert::useShinyalert(),
                                       h4("Click to continue"),
 
                                       # Add predefined nextPlayerUI
-                                      nextPlayerUI('jaipur')),
+                                      nextPlayerUI("Jaipur")),
 
                              # Panel of Player 1
                              tabPanel(

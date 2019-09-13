@@ -1,4 +1,7 @@
 # Module for taking  cards
+
+#' @title taking server function
+#'
 #' @keywords internal taking_server
 taking_server <- function(input, output, session, cards, parent_session) {
   # As inputId's have to be unique we have to call the events
