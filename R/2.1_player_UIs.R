@@ -28,16 +28,7 @@ player1_UI <- function(id) {
 
     # Actionbutton to swap
     actionButton(ns("swap_player_1"),
-                 label = "SWAP"),
-
-    # Output of player 1's hand
-    plotOutput(ns("plot_player_1"),
-               height = 280,
-               width = 700),
-
-    # Number of Players Camels under the Tokens
-    helpText("Number of Camels - Player 1"),
-    verbatimTextOutput(ns("camels_player_1"))
+                 label = "SWAP")
   )
 
 }
@@ -71,16 +62,7 @@ player2_UI <- function(id) {
 
     # Actionbutton to swap
     actionButton(ns("swap_player_2"),
-                 label = "SWAP"),
-
-    # Output of player 2's hand
-    plotOutput(ns("plot_player_2"),
-               height = 280,
-               width = 700),
-
-    # Number of Players Camels under the Tokens
-    helpText("Number of Camels - Player 2"),
-    verbatimTextOutput(ns("camels_player_2"))
+                 label = "SWAP")
   )
 
 }
