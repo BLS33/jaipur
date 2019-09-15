@@ -91,10 +91,9 @@ swapping <- function(input, output, cards, number, parent_session) {
 
         cards$action_text <-
           paste("Your opponent swapped",
-                mar[number],
+                mar[[number]],
                 "with",
-                vals[number],
-                "now it is your turn")
+                vals[[number]],".")
 
         # Update variables for plotting players input
         cards$last_swap <-
