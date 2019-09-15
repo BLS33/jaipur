@@ -15,6 +15,7 @@ jaipur_server <- function(input, output, session) {
     )
   )
 
+
   # Define playing cards inside serverfunction for reactivity
   cards <- shiny::reactiveValues(
     # put Count to 1 - count is requiered for updating tabsetPanels
@@ -80,12 +81,6 @@ jaipur_server <- function(input, output, session) {
     callModule(set_up_cards_server, 'jaipur', cards)
   })
 
-  # Call the plot server to plot the market and Player's hands
-  callModule(plot_server, 'jaipur', cards)
-
-  # Call the output_server to integrate the textoutputs
-  callModule(output_server, 'jaipur', cards)
-
   # Call player1_tab_server to create tabsetPanel of Player 1
   callModule(player1_tab_server, 'jaipur', cards)
 
@@ -109,6 +104,7 @@ jaipur_server <- function(input, output, session) {
       showTab(inputId = "inTabset", target = "Player 2")
       updateTabsetPanel(session = session, "inTabset", selected = "Player 2")
     } else{
+
       hideTab(inputId = "inTabset", target = "Player 2")
       showTab(inputId = "inTabset", target = "Player 1")
       updateTabsetPanel(session = session, "inTabset", selected = "Player 1")
@@ -126,11 +122,114 @@ jaipur_server <- function(input, output, session) {
     paste(cards$action_text)
   })
 
+
+  output$actionplot <- renderPlot({
+    plotting_func(
+      title = "Last intake",
+      cards = cards$last_action,
+      plot_position = list(c(0, 1.8),
+                           c(2, 3.8),
+                           c(4, 5.8),
+                           c(6, 7.8),
+                           c(8, 9.8)),
+      x_limit = c(0, 14),
+      cards_colors = color_func_jaipur(cards$last_action)
+    )
+  })
+
+  output$swappingplot <- renderPlot({
+    plotting_func(
+      title = "Last Drop",
+      cards = cards$last_swap,
+      plot_position = list(c(0, 1.8),
+                           c(2, 3.8),
+                           c(4, 5.8),
+                           c(6, 7.8),
+                           c(8, 9.8)),
+      x_limit = c(0, 14),
+      cards_colors = color_func_jaipur(cards$last_swap)
+    )
+  })
+
+  output$marketplot <- renderPlot({
+    plotting_func(
+      title = "Market",
+      cards = cards$market,
+      plot_position = list(c(0, 1.8),
+                           c(2, 3.8),
+                           c(4, 5.8),
+                           c(6, 7.8),
+                           c(8, 9.8)),
+      x_limit = c(0, 10),
+      cards_colors = color_func_jaipur(cards$market)
+    )
+  })
+
+  output$plot_player_1 <- renderPlot({
+    plotting_func(
+      title = "Hand Player 1",
+      cards = cards$hands[[1]],
+      plot_position = list(c(0, 1.5),
+                           c(2, 3.5),
+                           c(4, 5.5),
+                           c(6, 7.5),
+                           c(8, 9.5),
+                           c(10, 11.5),
+                           c(12, 13.5)),
+      x_limit = c(0, 14),
+      cards_colors = color_func_jaipur(cards$hands[[1]])
+    )
+  })
+
+  output$plot_player_2 <- renderPlot({
+    plotting_func(
+      title = "Hand Player 2",
+      cards = cards$hands[[2]],
+      plot_position = list(c(0, 1.5),
+                           c(2, 3.5),
+                           c(4, 5.5),
+                           c(6, 7.5),
+                           c(8, 9.5),
+                           c(10, 11.5),
+                           c(12, 13.5)),
+      x_limit = c(0, 14),
+      cards_colors = color_func_jaipur(cards$hands[[2]])
+    )
+  })
+
+  output$camels_player_1 <- renderPrint({
+    cards$camels[[1]]
+  })
+
+  # output for number of Camels of Player 2
+  output$camels_player_2 <- renderPrint({
+    cards$camels[[2]]
+  })
+
+  # Number of Cards left in the deck
+  output$Deck <- renderPrint({
+    (length(cards$deck))
+  })
+
+  # table of Tokens
+  output$Tokens <- renderTable({
+    (cards$tokens)
+  })
+
+
   # Restart the game when clicking on restart
   observeEvent(input$restart, {
     session$reload()
   })
+
+
+  # Restart the game when clicking on restart
+  observeEvent(input$restart1, {
+    session$reload()
+  })
+
 }
+
 
 
 
