@@ -6,7 +6,7 @@ nextPlayerUI <- function(id) {
   ns <- NS(id)
   tagList(
     # Actionbutton to continue to next Panel
-    actionButton(inputId = "continue",
+    actionButton("continue",
                  label = "Continue"),
 
     # Textoutput - gives last Player's action
