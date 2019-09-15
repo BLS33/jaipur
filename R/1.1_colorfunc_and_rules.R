@@ -35,6 +35,14 @@ color_func_jaipur <- function(x) {
   return(card_color)
 }
 
+
+#' @title Plot your playing cards
+#'
+#' @description Plot playing cards as textboxplots
+#'
+#' @note  insert plot position as list and color as a vector
+#'
+#' @export plotting_func
 plotting_func <- function(title, cards, plot_position, x_limit, cards_colors){
   graphics::plot(
     1,
@@ -64,7 +72,7 @@ plotting_func <- function(title, cards, plot_position, x_limit, cards_colors){
   }
 
 }
-color_func_jaipur(cards)
+
 
 rules <- "You are one of the two most powerful traders in the city of Jaipur,
         the capital of Rajasthan!
