@@ -35,6 +35,36 @@ color_func_jaipur <- function(x) {
   return(card_color)
 }
 
+plotting_func <- function(title, cards, plot_position, x_limit, cards_colors){
+  graphics::plot(
+    1,
+    type = "n",
+    xlab = "",
+    ylab = "",
+    axes = FALSE,
+    xlim = x_limit,
+    ylim = c(0, 1),
+    main = title
+  )
+
+  if (length(cards) > 0) {
+    for (i in 1:length(cards)) {
+      plotrix::textbox(
+        # Loop over plot_position vector which gives position of textboxes
+        plot_position[[i]],
+        0.85,
+        cards[i],
+        justify = "c",
+        fill = color_func_jaipur(cards)[i],
+        cex = 1.2,
+        leading = 8,
+        adj = c(0, 3.8)
+      )
+    }
+  }
+
+}
+color_func_jaipur(cards)
 
 rules <- "You are one of the two most powerful traders in the city of Jaipur,
         the capital of Rajasthan!
