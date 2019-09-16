@@ -9,7 +9,7 @@ jaipur_server <- function(input, output, session) {
       HTML(rules),
       footer = modalButton("Let's Play"),
       shinyWidgets::actionBttn(inputId = "start",
-                 label = "Set up the Game"),
+                               label = "Set up the Game"),
       easyClose = TRUE,
       size = "l"
     )
@@ -77,41 +77,35 @@ jaipur_server <- function(input, output, session) {
 
   # Set up the cards when clicking on 'Lets Play'
   observeEvent(input$start, {
-    # Set_up Module gets called, fills up the market and hands out cards
     callModule(set_up_cards_server, 'jaipur', cards)
   })
 
   # Call player1_tab_server to create tabsetPanel of Player 1
-  callModule(player1_tab_server, 'jaipur', cards)
-
-  # Call player_2_tab_server to create tabsetPanel of Player 2
-  callModule(player2_tab_server, 'jaipur', cards)
+  callModule(players_input_server, 'jaipur', cards)
 
   # call action-servers for when player take, sell or swap Cards
-  callModule(taking_server, 'jaipur', cards, parent_session = session)
-  callModule(swapping_server, 'jaipur', cards, parent_session = session)
-  callModule(selling_server, 'jaipur', cards, parent_session = session)
+  callModule(taking_selling_swapping_server,
+             'jaipur',
+             cards,
+             parent_session = session)
 
   # Move on to next player after seperating Panel
   observeEvent(input$continue, {
-    # Count gets increased
     cards$count <- cards$count + 1
 
     # # the Panels get updated and hidden according to the count which is
-    # increased when clicking on 'continue'
+
     if ((cards$count) %% 2 == 0) {
       hideTab(inputId = "inTabset", target = "Player 1")
       showTab(inputId = "inTabset", target = "Player 2")
       updateTabsetPanel(session = session, "inTabset", selected = "Player 2")
     } else{
-
       hideTab(inputId = "inTabset", target = "Player 2")
       showTab(inputId = "inTabset", target = "Player 1")
       updateTabsetPanel(session = session, "inTabset", selected = "Player 1")
     }
 
-    # End the Game when Players click on 'Continue' if there are no cards left,
-    # or when 3 of the tokens are sold out
+    # End the Game
     game_over_cards(input, output, cards)
 
     game_over_tokens(input, output, cards)
@@ -124,7 +118,7 @@ jaipur_server <- function(input, output, session) {
 
 
   output$actionplot <- renderPlot({
-    plotting_func(
+    playing_cards_plot(
       title = "Last intake",
       cards = cards$last_action,
       plot_position = list(c(0, 1.8),
@@ -133,12 +127,12 @@ jaipur_server <- function(input, output, session) {
                            c(6, 7.8),
                            c(8, 9.8)),
       x_limit = c(0, 14),
-      cards_colors = color_func_jaipur(cards$last_action)
+      cards_color = color_jaipur_cards(cards$last_action)
     )
   })
 
   output$swappingplot <- renderPlot({
-    plotting_func(
+    playing_cards_plot(
       title = "Last Drop",
       cards = cards$last_swap,
       plot_position = list(c(0, 1.8),
@@ -147,12 +141,12 @@ jaipur_server <- function(input, output, session) {
                            c(6, 7.8),
                            c(8, 9.8)),
       x_limit = c(0, 14),
-      cards_colors = color_func_jaipur(cards$last_swap)
+      cards_color = color_jaipur_cards(cards$last_swap)
     )
   })
 
   output$marketplot <- renderPlot({
-    plotting_func(
+    playing_cards_plot(
       title = "Market",
       cards = cards$market,
       plot_position = list(c(0, 1.8),
@@ -161,52 +155,57 @@ jaipur_server <- function(input, output, session) {
                            c(6, 7.8),
                            c(8, 9.8)),
       x_limit = c(0, 10),
-      cards_colors = color_func_jaipur(cards$market)
+      cards_color = color_jaipur_cards(cards$market)
     )
   })
 
   output$plot_player_1 <- renderPlot({
-    plotting_func(
+    playing_cards_plot(
       title = "Hand Player 1",
       cards = cards$hands[[1]],
-      plot_position = list(c(0, 1.5),
-                           c(2, 3.5),
-                           c(4, 5.5),
-                           c(6, 7.5),
-                           c(8, 9.5),
-                           c(10, 11.5),
-                           c(12, 13.5)),
+      plot_position = list(
+        c(0, 1.5),
+        c(2, 3.5),
+        c(4, 5.5),
+        c(6, 7.5),
+        c(8, 9.5),
+        c(10, 11.5),
+        c(12, 13.5)
+      ),
       x_limit = c(0, 14),
-      cards_colors = color_func_jaipur(cards$hands[[1]])
+      cards_color = color_jaipur_cards(cards$hands[[1]])
     )
   })
 
   output$plot_player_2 <- renderPlot({
-    plotting_func(
+    playing_cards_plot(
       title = "Hand Player 2",
       cards = cards$hands[[2]],
-      plot_position = list(c(0, 1.5),
-                           c(2, 3.5),
-                           c(4, 5.5),
-                           c(6, 7.5),
-                           c(8, 9.5),
-                           c(10, 11.5),
-                           c(12, 13.5)),
+      plot_position = list(
+        c(0, 1.5),
+        c(2, 3.5),
+        c(4, 5.5),
+        c(6, 7.5),
+        c(8, 9.5),
+        c(10, 11.5),
+        c(12, 13.5)
+      ),
       x_limit = c(0, 14),
-      cards_colors = color_func_jaipur(cards$hands[[2]])
+      cards_color = color_jaipur_cards(cards$hands[[2]])
     )
   })
 
+  # Output for camels Player 1
   output$camels_player_1 <- renderPrint({
     cards$camels[[1]]
   })
 
-  # output for number of Camels of Player 2
+  # output for camels Player 2
   output$camels_player_2 <- renderPrint({
     cards$camels[[2]]
   })
 
-  # Number of Cards left in the deck
+  # Number of Cards left in deck
   output$Deck <- renderPrint({
     (length(cards$deck))
   })
@@ -222,15 +221,4 @@ jaipur_server <- function(input, output, session) {
     session$reload()
   })
 
-
-  # Restart the game when clicking on restart
-  observeEvent(input$restart1, {
-    session$reload()
-  })
-
 }
-
-
-
-
-
