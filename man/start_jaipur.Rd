@@ -6,6 +6,11 @@
 \usage{
 start_jaipur(Player_one = "Player 1", Player_two = "Player 2")
 }
+\arguments{
+\item{Player_one}{Name of Player one}
+
+\item{Player_two}{Name of Player two}
+}
 \description{
 Jaipur is a two player card game.
 }

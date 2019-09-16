@@ -121,7 +121,7 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Last intake",
       cards = cards$last_action,
-      plot_position = list(c(0, 1.8),
+      x = list(c(0, 1.8),
                            c(2, 3.8),
                            c(4, 5.8),
                            c(6, 7.8),
@@ -135,7 +135,7 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Last Drop",
       cards = cards$last_swap,
-      plot_position = list(c(0, 1.8),
+      x = list(c(0, 1.8),
                            c(2, 3.8),
                            c(4, 5.8),
                            c(6, 7.8),
@@ -149,7 +149,7 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Market",
       cards = cards$market,
-      plot_position = list(c(0, 1.8),
+      x = list(c(0, 1.8),
                            c(2, 3.8),
                            c(4, 5.8),
                            c(6, 7.8),
@@ -163,7 +163,7 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Hand Player 1",
       cards = cards$hands[[1]],
-      plot_position = list(
+      x = list(
         c(0, 1.5),
         c(2, 3.5),
         c(4, 5.5),
@@ -181,7 +181,7 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Hand Player 2",
       cards = cards$hands[[2]],
-      plot_position = list(
+      x = list(
         c(0, 1.5),
         c(2, 3.5),
         c(4, 5.5),

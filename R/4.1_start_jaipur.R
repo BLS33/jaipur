@@ -2,8 +2,14 @@
 #'
 #' @description Jaipur is a two player card game.
 #'
+#' @param Player_one Name of Player one
+#' @param Player_two Name of Player two
+#'
 #' @note  For more FUN while playing call shinyalert::useShinyalert()
 #' in your console
+#'
+#' @example start_jaipur(Player_one = "Torsten",
+#' Player_two = "Torben")
 #'
 #' @export start_jaipur
 start_jaipur <-
@@ -17,4 +23,4 @@ start_jaipur <-
     }
   }
 
-start_jaipur("Thomas", "Torsten")
+
