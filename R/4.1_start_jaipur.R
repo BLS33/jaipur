@@ -8,8 +8,6 @@
 #' @note  For more FUN while playing call shinyalert::useShinyalert()
 #' in your console
 #'
-#' @examples
-#' start_jaipur(Player_one = "Torsten", Player_two = "Torben")
 #'
 #' @export start_jaipur
 start_jaipur <-
