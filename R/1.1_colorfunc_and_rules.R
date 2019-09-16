@@ -40,19 +40,16 @@ color_jaipur_cards <- function(x) {
 #'
 #' @description Plot playing cards as textboxplots
 #'
-#' @param title = The Title of your plot. Default = "Plot Title".
-#' @param cards = Playing Cards that will be plotted as character.
+#' @param title The Title of your plot. Default = "Plot Title".
+#' @param cards Playing Cards that will be plotted as character.
 #' @param x list of vectors with min.and max. x-position of cards.
 #' @param y y position: location of the top of the card.
 #' @param x_limit set x scale limit. Default is c(0, 10).
 #' @param cards_color colors of playing cards, default is white.
 #'
 #' @examples
-#' # Generate some playing cards
-#'  my_playing_cards <- c("Ace", "King", "Seven")
-#'
 #'  playing_cards_plot(title = "My Playing Cards",
-#'  cards = my_playing_cards,
+#'  cards = c("Ace", "King", "Seven"),
 #'  x = list(c(0, 1.5),
 #'  c(2, 3.5),
 #'  c(4, 5.5)),
