@@ -47,19 +47,6 @@ color_jaipur_cards <- function(x) {
 #' @param x_limit set x scale limit. Default is c(0, 10).
 #' @param cards_color colors of playing cards, default is white.
 #'
-#' @examples # generate some playing cards
-#' my_playing_cards <- c("Ace", "King", "Seven")
-#'
-#' playing_cards_plot(title = "My playing cards",
-#' cards = my_playing_cards,
-#' x = list(c(0, 1.5),
-#' c(2, 3.5),
-#' c(4, 5.5)),
-#' y = 0.85,
-#' x_limit = c(0, 12),
-#' cards_color = c("green", "blue", "red")
-#' )
-#'
 #' @export playing_cards_plot
 playing_cards_plot <- function(title = "Plot Title",
                                cards,
