@@ -2,8 +2,8 @@
 
 #### color player 1's hand ###
 
-#' @keywords internal color_func_jaipur
-color_func_jaipur <- function(x) {
+#' @keywords internal color_jaipur_cards
+color_jaipur_cards <- function(x) {
   card_color <- rep(NA, length(x))
 
   for (i in 1:length(x)) {
@@ -42,8 +42,9 @@ color_func_jaipur <- function(x) {
 #'
 #' @note  insert plot position as list and color as a vector
 #'
-#' @export plotting_func
-plotting_func <- function(title, cards, plot_position, x_limit, cards_colors){
+#' @export playing_cards_plot
+
+playing_cards_plot <- function(title, cards, plot_position, x_limit, cards_color){
   graphics::plot(
     1,
     type = "n",
@@ -63,7 +64,7 @@ plotting_func <- function(title, cards, plot_position, x_limit, cards_colors){
         0.85,
         cards[i],
         justify = "c",
-        fill = color_func_jaipur(cards)[i],
+        fill = cards_color[i],
         cex = 1.2,
         leading = 8,
         adj = c(0, 3.8)
@@ -122,5 +123,22 @@ rules <- "You are one of the two most powerful traders in the city of Jaipur,
         <br>
         <br>
         <br>"
+
+
+expect_error(playing_cards_plot(
+  title = "Last intake",
+  cards = c("Ace", "King", "LOL"),
+  plot_position = list(c(0, 1.8),
+                       c(8, 9.8)),
+  x_limit = c(0, 14),
+  cards_color = c("brown", "yellow")
+), NA)
+
+f <- function(x) {
+  if (x < 0) message("*x* is already negative")
+  -x
+}
+expect_message(f(-1))
+
 
 
