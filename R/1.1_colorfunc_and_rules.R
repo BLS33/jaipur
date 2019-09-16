@@ -65,35 +65,38 @@ playing_cards_plot <- function(title = "Plot Title",
                                cards,
                                x,
                                y = 0.85,
-                               x_limit = c(0,10),
+                               x_limit = c(0, 10),
                                cards_color = "white") {
-  graphics::plot(
-    1,
-    type = "n",
-    xlab = "",
-    ylab = "",
-    axes = FALSE,
-    xlim = x_limit,
-    ylim = c(0, 1),
-    main = title
-  )
+  if (length(cards) > length(x)) {
+    stop("you have to specify at least as many x-positions as cards")
+  } else {
+    graphics::plot(
+      1,
+      type = "n",
+      xlab = "",
+      ylab = "",
+      axes = FALSE,
+      xlim = x_limit,
+      ylim = c(0, 1),
+      main = title
+    )
 
-  if (length(cards) > 0) {
-    for (i in 1:length(cards)) {
-      plotrix::textbox(
-        # Loop over plot_position vector which gives position of textboxes
-        x = x[[i]],
-        y = y,
-        cards[i],
-        justify = "c",
-        fill = cards_color[i],
-        cex = 1.2,
-        leading = 8,
-        adj = c(0, 3.8)
-      )
+    if (length(cards) > 0) {
+      for (i in 1:length(cards)) {
+        plotrix::textbox(
+          # Loop over plot_position vector which gives position of textboxes
+          x = x[[i]],
+          y = y,
+          cards[i],
+          justify = "c",
+          fill = cards_color[i],
+          cex = 1.2,
+          leading = 8,
+          adj = c(0, 3.8)
+        )
+      }
     }
   }
-
 }
 
 
