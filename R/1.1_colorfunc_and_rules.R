@@ -124,15 +124,6 @@ rules <- "You are one of the two most powerful traders in the city of Jaipur,
         <br>"
 
 
-expect_error(playing_cards_plot(
-  title = "Last intake",
-  cards = c("Ace", "King", "LOL"),
-  plot_position = list(c(0, 1.8),
-                       c(8, 9.8)),
-  x_limit = c(0, 14),
-  cards_color = c("brown", "yellow")
-), NA)
-
 
 
 
