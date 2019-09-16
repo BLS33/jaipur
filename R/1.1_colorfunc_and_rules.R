@@ -43,7 +43,6 @@ color_jaipur_cards <- function(x) {
 #' @note  insert plot position as list and color as a vector
 #'
 #' @export playing_cards_plot
-
 playing_cards_plot <- function(title, cards, plot_position, x_limit, cards_color){
   graphics::plot(
     1,
