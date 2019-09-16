@@ -23,3 +23,14 @@ playing_cards_plot(title = "Plot Title", cards, x, y = 0.85,
 \description{
 Plot playing cards as textboxplots
 }
+\examples{
+# Generate some playing cards
+ my_playing_cards <- c("Ace", "King", "Seven")
+
+ playing_cards_plot(title = "My Playing Cards",
+ cards = my_playing_cards,
+ x = list(c(0, 1.5),
+ c(2, 3.5),
+ c(4, 5.5)),
+ cards_color = c("green", "blue", "red"))
+}
