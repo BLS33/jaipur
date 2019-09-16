@@ -61,7 +61,7 @@ test <- function(name1, name2) {
             # Define text style with html
             tags$style(
               "#opponents_action{color: black;
-                                 font-size: 30px;
+                                 font-size: 20px;
                                  font-style: arvo;
                                  }"
             )
