@@ -134,11 +134,8 @@ expect_error(playing_cards_plot(
   cards_color = c("brown", "yellow")
 ), NA)
 
-f <- function(x) {
-  if (x < 0) message("*x* is already negative")
-  -x
-}
-expect_message(f(-1))
+
+
 
 
 
