@@ -9,7 +9,7 @@
 #' in your console
 #'
 #' @examples
-#' jaipur::start_jaipur(Player_one = "Torsten", Player_two = "Torben")
+#' start_jaipur(Player_one = "Torsten", Player_two = "Torben")
 #'
 #' @export start_jaipur
 start_jaipur <-
