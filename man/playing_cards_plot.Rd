@@ -4,11 +4,37 @@
 \alias{playing_cards_plot}
 \title{Plot your playing cards}
 \usage{
-playing_cards_plot(title, cards, plot_position, x_limit, cards_color)
+playing_cards_plot(title = "Plot Title", cards, x, y = 0.85,
+  x_limit = c(0, 10), cards_color = "white")
+}
+\arguments{
+\item{title}{= The Title of your plot. Default = "Plot Title".}
+
+\item{cards}{= Playing Cards that will be plotted as character.}
+
+\item{x}{list of vectors with min.and max. x-position of cards.}
+
+\item{y}{y position: location of the top of the card.}
+
+\item{x_limit}{set x scale limit. Default is c(0, 10).}
+
+\item{cards_color}{colors of playing cards, default is white.}
 }
 \description{
 Plot playing cards as textboxplots
 }
-\note{
-insert plot position as list and color as a vector
+\examples{
+# generate some playing cards
+my_playing_cards <- c("Ace", "King", "Seven")
+
+playing_cards_plot(title = "My playing cards",
+cards = my_playing_cards,
+x = list(c(0, 1.5),
+c(2, 3.5),
+c(4, 5.5)),
+y = 0.85,
+x_limit = c(0, 12),
+cards_color = c("green", "blue", "red")
+)
+
 }

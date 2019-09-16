@@ -40,10 +40,33 @@ color_jaipur_cards <- function(x) {
 #'
 #' @description Plot playing cards as textboxplots
 #'
-#' @note  insert plot position as list and color as a vector
+#' @param title = The Title of your plot. Default = "Plot Title".
+#' @param cards = Playing Cards that will be plotted as character.
+#' @param x list of vectors with min.and max. x-position of cards.
+#' @param y y position: location of the top of the card.
+#' @param x_limit set x scale limit. Default is c(0, 10).
+#' @param cards_color colors of playing cards, default is white.
+#'
+#' @examples # generate some playing cards
+#' my_playing_cards <- c("Ace", "King", "Seven")
+#'
+#' playing_cards_plot(title = "My playing cards",
+#' cards = my_playing_cards,
+#' x = list(c(0, 1.5),
+#' c(2, 3.5),
+#' c(4, 5.5)),
+#' y = 0.85,
+#' x_limit = c(0, 12),
+#' cards_color = c("green", "blue", "red")
+#' )
 #'
 #' @export playing_cards_plot
-playing_cards_plot <- function(title, cards, plot_position, x_limit, cards_color){
+playing_cards_plot <- function(title = "Plot Title",
+                               cards,
+                               x,
+                               y = 0.85,
+                               x_limit = c(0,10),
+                               cards_color = "white") {
   graphics::plot(
     1,
     type = "n",
@@ -59,8 +82,8 @@ playing_cards_plot <- function(title, cards, plot_position, x_limit, cards_color
     for (i in 1:length(cards)) {
       plotrix::textbox(
         # Loop over plot_position vector which gives position of textboxes
-        plot_position[[i]],
-        0.85,
+        x = x[[i]],
+        y = y,
         cards[i],
         justify = "c",
         fill = cards_color[i],
@@ -122,10 +145,5 @@ rules <- "You are one of the two most powerful traders in the city of Jaipur,
         <br>
         <br>
         <br>"
-
-
-
-
-
 
 
