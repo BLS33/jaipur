@@ -8,9 +8,9 @@ playing_cards_plot(title = "Plot Title", cards, x, y = 0.85,
   x_limit = c(0, 10), cards_color = "white")
 }
 \arguments{
-\item{title}{= The Title of your plot. Default = "Plot Title".}
+\item{title}{The Title of your plot. Default = "Plot Title".}
 
-\item{cards}{= Playing Cards that will be plotted as character.}
+\item{cards}{Playing Cards that will be plotted as character.}
 
 \item{x}{list of vectors with min.and max. x-position of cards.}
 
@@ -24,11 +24,8 @@ playing_cards_plot(title = "Plot Title", cards, x, y = 0.85,
 Plot playing cards as textboxplots
 }
 \examples{
-# Generate some playing cards
- my_playing_cards <- c("Ace", "King", "Seven")
-
  playing_cards_plot(title = "My Playing Cards",
- cards = my_playing_cards,
+ cards = c("Ace", "King", "Seven"),
  x = list(c(0, 1.5),
  c(2, 3.5),
  c(4, 5.5)),
