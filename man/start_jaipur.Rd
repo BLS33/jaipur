@@ -4,7 +4,7 @@
 \alias{start_jaipur}
 \title{Start the Game Jaipur}
 \usage{
-start_jaipur()
+start_jaipur(Player_one = "Player 1", Player_two = "Player 2")
 }
 \description{
 Jaipur is a two player card game.
