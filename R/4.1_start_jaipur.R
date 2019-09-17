@@ -15,9 +15,8 @@ start_jaipur <-
     if (typeof(Player_one) != "character") {
       stop("Your input has to be of type character")
     } else {
-      shiny::shinyApp(ui = test(Player_one, Player_two), server = jaipur_server)
+      shiny::shinyApp(ui = jaipur_ui(Player_one, Player_two), server = jaipur_server)
 
     }
   }
-
 

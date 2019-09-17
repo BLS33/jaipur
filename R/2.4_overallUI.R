@@ -2,8 +2,8 @@
 
 #' @keywords internal jaipur_ui
 
-test <- function(name1, name2) {
-  jaipur_ui <- fluidPage(
+jaipur_ui <- function(name1, name2) {
+  fluidPage(
     shinyalert::useShinyalert(),
 
     sidebarLayout(
