@@ -7,14 +7,12 @@ jaipur_server <- function(input, output, session) {
     modalDialog(
       title = "Jaipur Rules",
       HTML(rules),
-      footer = modalButton("Let's Play"),
-      shinyWidgets::actionBttn(inputId = "start",
-                               label = "Set up the Game"),
-      easyClose = TRUE,
+      footer = shinyWidgets::actionBttn(inputId = "start",
+                               label = "START THE GAME"),
+      easyClose = FALSE,
       size = "l"
     )
   )
-
 
   # Define playing cards inside serverfunction for reactivity
   cards <- shiny::reactiveValues(
@@ -78,6 +76,8 @@ jaipur_server <- function(input, output, session) {
   # Set up the cards when clicking on 'Lets Play'
   observeEvent(input$start, {
     callModule(set_up_cards_server, 'jaipur', cards)
+
+    removeModal()
   })
 
   # Call player1_tab_server to create tabsetPanel of Player 1
