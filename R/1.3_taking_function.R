@@ -51,8 +51,7 @@ taking <- function(input,
                       "inTabset", selected = "Next Player")
 
     cards$action_text <-
-      paste("Your opponent took", cam1, mar[[number]],
-            "now it is your turn")
+      paste("Your opponent took", cam1, "Camel, now it is your turn")
 
     # If the Player's do not take a Camel
   } else{
