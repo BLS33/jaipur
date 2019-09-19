@@ -1,7 +1,11 @@
 # Function for taking cards - 'number' identifies Player
 
 #' @keywords internal taking
-taking <- function(input, output, cards, number, parent_session) {
+taking <- function(input,
+                   output,
+                   cards,
+                   number,
+                   parent_session) {
   # Create list with input for easier access
   mar <- list(c(input$market_player_1),
               c(input$market_player_2))
@@ -9,12 +13,10 @@ taking <- function(input, output, cards, number, parent_session) {
   # If the Player's take Camels, they are not just takin 1 Camel, but all
   # Camels on the market
   if (all(mar[[number]] == "Camel") == TRUE) {
-
     # Create variable which captures all Camels for easier access
     cam1 <- length(which(cards$market[1:5] == "Camel"))
 
-    cards$last_action <-
-      rep(c(input$market_player_1, input$market_player_2), times = cam1)
+    cards$last_action <- rep(c("Camel"), times = cam1)
     cards$last_swap <- c()
 
     # Get Camels from market
@@ -54,10 +56,8 @@ taking <- function(input, output, cards, number, parent_session) {
 
     # If the Player's do not take a Camel
   } else{
-
     # Make sure the Players can only take 1 Cards
     if (length(mar[[number]]) != 1) {
-
       # Errormessage if they try to take several Cards
       shinyalert::shinyalert(
         title = "Error",
@@ -72,14 +72,13 @@ taking <- function(input, output, cards, number, parent_session) {
         animation = TRUE
       )
     } else{
-
       # Make sure Player's only carry seven cards
       if ((length(cards$hands[[number]]) >= 7)) {
-
         # Errormessage if they already carry 7 Cards
         shinyalert::shinyalert(
           title = "Error",
-          text = HTML("Don't be greedy! <br> You cannot take more than 7 Goods"),
+          text = HTML("Don't be greedy!
+                      <br> You cannot take more than 7 Goods"),
           html = TRUE,
           type = "error",
           showConfirmButton = TRUE,
@@ -91,7 +90,6 @@ taking <- function(input, output, cards, number, parent_session) {
         )
         # If the Player's normally take a Cards
       } else{
-
         # append market input to last_action, to plot action in tabPanel
         cards$last_action <-
           c(input$market_player_1, input$market_player_2)
@@ -152,14 +150,17 @@ taking <- function(input, output, cards, number, parent_session) {
 # Function for taking cards - 'number' identifies Player
 
 #' @keywords internal selling
-selling <- function(input, output, cards, number, parent_session) {
+selling <- function(input,
+                    output,
+                    cards,
+                    number,
+                    parent_session) {
   # Create list with input for easier access
   vals <- list(c(input$hand_player_1),
                c(input$hand_player_2))
 
   # Make sure the player's can only sell one type of Good
   if (all(vals[[number]][1] == vals[[number]]) == FALSE) {
-
     shinyalert::shinyalert(
       title = "Error",
       text = HTML("You can only sell one type of Good"),
@@ -296,7 +297,11 @@ selling <- function(input, output, cards, number, parent_session) {
 
 
 #' @keywords internal swapping
-swapping <- function(input, output, cards, number, parent_session) {
+swapping <- function(input,
+                     output,
+                     cards,
+                     number,
+                     parent_session) {
   # Create list that capture the player's input
   # with 'number' we can access the desired player (...)[[number]]
   vals <- list(c(input$hand_player_1),
@@ -387,7 +392,7 @@ swapping <- function(input, output, cards, number, parent_session) {
           paste("Your opponent swapped",
                 mar[[number]],
                 "with",
-                vals[[number]],".")
+                vals[[number]], ".")
 
         # Update variables for plotting players input
         cards$last_swap <-
@@ -399,8 +404,3 @@ swapping <- function(input, output, cards, number, parent_session) {
     }
   }
 }
-
-
-
-
-
