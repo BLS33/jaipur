@@ -114,21 +114,25 @@ rules <- "You are one of the two most powerful traders in the city of Jaipur,
         If you want to take cards, you have to choose between taking all the
         camels, or taking one card from the market.
         You can take a card, by ticking a card from the market (blue buttons)
-        and then click on the button labeled 'TAKE'
+        and then click on the button labeled 'TAKE'.
+        <br>
         <br>
         If you swap cards, you have to swap between 2 and 5 cards between
         the market and your hand. Simply tick the cards you want to swap on the
         market (blue buttons) and on your hand (green buttons) respectively and
         confirm by clicking on 'SWAP'.
         <br>
+        <br>
+
         If you sell cards, proceed in the same way as when you take or swap
-        cards, the Game will remind you if you try action that are not allowed.
-        The TOKENS table on the left display the prices to which you can
+        cards, the Game will remind you if you try actions that are not allowed.
+        The Tokens table on the left, displays the prices to which you can
         sell your goods. If you sell for example 2 'Leather' you will receive
         4 + 3 = 7 ruppees and the corresponding entries in the table will be
         deleted.
         <br>
-        As you cann see, the chips' values decrease as the game progresses,
+        <br>
+        As you can see, the chips' values decrease as the game progresses,
         so you'd better hurry!
         On the other hand, you receive increasingly high rewards for
         selling three, four, or five cards of the same good at a time. These
@@ -137,9 +141,13 @@ rules <- "You are one of the two most powerful traders in the city of Jaipur,
         between 1 and 3 if you sell 3 goods, between 4 and 7 if you sell 4 goods
         and between 8 and 10 if you sell 5 or more goods.
         <br>
+        <br>
         You can't sell camels, but they're paramount for trading and they're
-        also worth 5 ruppees at the end of the game if you have a bigger camel
+        worth 5 ruppees at the end of the game if you have a bigger camel
         herd than your opponent.
-        <br>"
+        <br>
+        <br>
+        Start the game, by clicking on the button below!"
+
 
 
