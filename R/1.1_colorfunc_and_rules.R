@@ -113,18 +113,15 @@ rules <- "You are one of the two most powerful traders in the city of Jaipur,
         <br>
         If you want to take cards, you have to choose between taking all the
         camels, or taking one card from the market.
-        You can take a card, by choosing a card from the market with the input
-        Options and then click on the button labeled 'TAKE'
+        You can take a card, by ticking a card from the market (blue buttons)
+        and then click on the button labeled 'TAKE'
         <br>
         The market is displayed in the left upper corner of the monitor.
         <br>
         If you swap cards, you have to swap between 2 and 5 cards between
-        the market and your hand.
-        <br<
-        Your hand is displayed as a Plot in the middle of your Panel. For
-        swapping Cards, you have choose cards from your hand and from the
-        market by clicking on the Input options and then click on the button
-        labelled 'SWAP'.
+        the market and your hand. Simply tick the cards you want to swap on the
+        market (blue buttons) and on your hand (green buttons) respectively and
+        confirm by clicking on 'SWAP'.
         <br>
         If you sell cards, you get to sell only one type of good, and you
         receive as many chips for that good as the number of cards you sold.
