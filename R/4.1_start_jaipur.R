@@ -5,8 +5,7 @@
 #' @param Player_one Name of Player one
 #' @param Player_two Name of Player two
 #'
-#' @note  For more FUN while playing call shinyalert::useShinyalert()
-#' in your console
+#' @note  For more FUN while playing call play the game in full screen mode!
 #'
 #' @export start_jaipur
 start_jaipur <-
