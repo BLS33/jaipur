@@ -3,21 +3,31 @@
 #' @keywords internal jaipur_server
 jaipur_server <- function(input, output, session) {
   # Show the Rules of the Game with a 'setup' button which sets up the Game
-  showModal(
-    modalDialog(
-      title = "Jaipur Rules",
-      HTML(rules),
-      footer = shinyWidgets::actionBttn(inputId = "start",
-                               label = "START THE GAME"),
-      easyClose = FALSE,
-      size = "l"
-    )
-  )
+  showModal(modalDialog(
+    title = "Jaipur Rules",
+    HTML(rules),
+    footer =  list(
+      div(style = "display: inline-block;vertical-align:top; width: 200px;",
+          textInput("name1", "Player 1", value = "")),
+      div(style = "display: inline-block;vertical-align:top; width: 200px;",
+          textInput("name2", "Player 2", value = "")),
+      div(
+        style = "display: inline-block;vertical-align:top; width: 350px;",
+        shinyWidgets::actionBttn(inputId = "start",
+                                 label = "START THE GAME")
+      )
+    ),
+    easyClose = FALSE,
+    size = "l"
+  ))
 
   # Define playing cards inside serverfunction for reactivity
   cards <- shiny::reactiveValues(
     # put Count to 1 - count is requiered for updating tabsetPanels
     count = 1,
+
+    names = list(name1 = "Player one",
+                 name2 = "Player two"),
 
     # Define the deck with only 8 Camels, as 3 Camels are on market
     # 'sample' the deck so the cards get shuffled
@@ -73,6 +83,16 @@ jaipur_server <- function(input, output, session) {
     last_swap = c()
   )
 
+  observeEvent(input$name1, {
+    req(input$name1)
+    cards$names[[1]] <- input$name1
+  })
+
+  observeEvent(input$name2, {
+    req(input$name2)
+    cards$names[[2]] <- input$name2
+  })
+
   # Set up the cards when clicking on 'Lets Play'
   observeEvent(input$start, {
     callModule(set_up_cards_server, 'jaipur', cards)
@@ -122,10 +142,10 @@ jaipur_server <- function(input, output, session) {
       title = "Last intake",
       cards = cards$last_action,
       x = list(c(0, 1.8),
-                           c(2, 3.8),
-                           c(4, 5.8),
-                           c(6, 7.8),
-                           c(8, 9.8)),
+               c(2, 3.8),
+               c(4, 5.8),
+               c(6, 7.8),
+               c(8, 9.8)),
       x_limit = c(0, 14),
       cards_color = color_jaipur_cards(cards$last_action)
     )
@@ -135,11 +155,15 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Last Drop",
       cards = cards$last_swap,
-      x = list(c(0, 1.8),
-                           c(2, 3.8),
-                           c(4, 5.8),
-                           c(6, 7.8),
-                           c(8, 9.8)),
+      x = list(
+        c(0, 1.5),
+        c(2, 3.5),
+        c(4, 5.5),
+        c(6, 7.5),
+        c(8, 9.5),
+        c(10, 11.5),
+        c(12, 13.5)
+      ),
       x_limit = c(0, 14),
       cards_color = color_jaipur_cards(cards$last_swap)
     )
@@ -150,10 +174,10 @@ jaipur_server <- function(input, output, session) {
       title = "Market",
       cards = cards$market,
       x = list(c(0, 1.8),
-                           c(2, 3.8),
-                           c(4, 5.8),
-                           c(6, 7.8),
-                           c(8, 9.8)),
+               c(2, 3.8),
+               c(4, 5.8),
+               c(6, 7.8),
+               c(8, 9.8)),
       x_limit = c(0, 10),
       cards_color = color_jaipur_cards(cards$market)
     )

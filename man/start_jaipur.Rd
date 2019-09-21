@@ -7,9 +7,9 @@
 start_jaipur(Player_one = "Player 1", Player_two = "Player 2")
 }
 \arguments{
-\item{Player_one}{Name of Player one}
+\item{Player_one}{Title of Player one's tabPanel}
 
-\item{Player_two}{Name of Player two}
+\item{Player_two}{Title of Player two's tabPanel}
 }
 \description{
 Jaipur is a two player card game.

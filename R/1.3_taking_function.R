@@ -1,11 +1,7 @@
 # Function for taking cards - 'number' identifies Player
 
 #' @keywords internal taking
-taking <- function(input,
-                   output,
-                   cards,
-                   number,
-                   parent_session) {
+taking <- function(input, output, cards, number, parent_session) {
   # Create list with input for easier access
   mar <- list(c(input$market_player_1),
               c(input$market_player_2))
@@ -32,8 +28,9 @@ taking <- function(input,
     shinyalert::shinyalert(
       title = "Success",
       text = HTML(
-        "You took the camels, <br>  now it is Player",
-        number  %% 2 + 1,
+        cards$names[[number]],
+        "You took the camels, <br>  now it is",
+        ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
         "'s turn"
       ),
       html = TRUE,
@@ -51,7 +48,13 @@ taking <- function(input,
                       "inTabset", selected = "Next Player")
 
     cards$action_text <-
-      paste("Your opponent took", cam1, "Camel, now it is your turn")
+      paste(
+        cards$names[[number]],
+        "took",
+        cam1,
+        "Camel, now it is your turn",
+        ifelse(number == 1, cards$names[[2]], cards$names[[1]])
+      )
 
     # If the Player's do not take a Camel
   } else{
@@ -109,10 +112,11 @@ taking <- function(input,
           title = "Success",
           text = HTML(
             paste(
+              cards$names[[number]],
               "You successfully took",
               mar[[number]],
-              "<br>  now it is Player",
-              number  %% 2 + 1,
+              "<br>  now it is",
+              ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
               "'s turn"
             )
           ),
@@ -133,8 +137,13 @@ taking <- function(input,
         # update textOutput which is printed on intermediate Panel so
         # the opponent sees which action was taken
         cards$action_text <-
-          paste("Your opponent took", mar[[number]],
-                "now it is your turn")
+          paste(
+            cards$names[[number]],
+            "took",
+            mar[[number]],
+            "now it is your turn",
+            ifelse(number == 1, cards$names[[2]], cards$names[[1]])
+          )
 
         # Update variables for plotting players input
         cards$last_swap <- c()
@@ -149,11 +158,7 @@ taking <- function(input,
 # Function for taking cards - 'number' identifies Player
 
 #' @keywords internal selling
-selling <- function(input,
-                    output,
-                    cards,
-                    number,
-                    parent_session) {
+selling <- function(input, output,cards, number, parent_session) {
   # Create list with input for easier access
   vals <- list(c(input$hand_player_1),
                c(input$hand_player_2))
@@ -259,8 +264,9 @@ selling <- function(input,
         shinyalert::shinyalert(
           title = "Success",
           text = HTML(
-            "Your sale was successful, <br>  now it is Player",
-            number  %% 2 + 1,
+            cards$names[[number]],
+            "Your sale was successful, <br>  now it is",
+            ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
             "'s turn"
           ),
           html = TRUE,
@@ -276,10 +282,14 @@ selling <- function(input,
         # update textOutput which is printed on intermediate Panel so
         # the opponent sees which action was taken
         cards$action_text <-
-          paste("Your opponent sold",
-                length(vals[[number]]),
-                vals[[number]][1],
-                "now it is your turn")
+          paste(
+            cards$names[[number]],
+            "sold",
+            length(vals[[number]]),
+            vals[[number]][1],
+            "now it is your turn",
+            ifelse(number == 1, cards$names[[2]], cards$names[[1]])
+          )
 
         cards$last_swap <-
           c(input$hand_player_1, input$hand_player_2)
@@ -296,11 +306,7 @@ selling <- function(input,
 
 
 #' @keywords internal swapping
-swapping <- function(input,
-                     output,
-                     cards,
-                     number,
-                     parent_session) {
+swapping <- function(input, output, cards, number, parent_session) {
   # Create list that capture the player's input
   # with 'number' we can access the desired player (...)[[number]]
   vals <- list(c(input$hand_player_1),
@@ -368,8 +374,9 @@ swapping <- function(input,
           title = "Success",
           text = HTML(
             paste(
-              "Your swap was successful, <br> now it is Player",
-              number  %% 2 + 1,
+              cards$names[[number]],
+              "Your swap was successful, <br> now it is",
+              ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
               "'s turn"
             )
           ),
@@ -388,7 +395,7 @@ swapping <- function(input,
                           "inTabset", selected = "Next Player")
 
         cards$action_text <-
-          paste("Your opponent swapped",
+          paste(cards$names[[number]], "swapped",
                 mar[[number]],
                 "with",
                 vals[[number]], ".")

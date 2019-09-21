@@ -2,8 +2,8 @@
 #'
 #' @description Jaipur is a two player card game.
 #'
-#' @param Player_one Name of Player one
-#' @param Player_two Name of Player two
+#' @param Player_one Title of Player one's tabPanel
+#' @param Player_two Title of Player two's tabPanel
 #'
 #' @note  For more FUN while playing play the game in full screen mode!
 #'

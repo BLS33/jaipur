@@ -25,20 +25,22 @@ game_over_cards <- function(input, output, cards) {
           "The Game is over.
           <br> All cards have been taken!
           <br>
-          Money Player 1:",
+          Money", cards$names[[1]],
+          ":",
           cards$money[[1]],
           "<br>
-          <br> Money Player 2:",
+          <br> Money", cards$names[[2]],
+          ":",
           cards$money[[2]],
           "<br> <br>",
           ifelse(
             cards$money[[1]] > cards$money[[2]],
-            "Congratulations <br> Player 1 wins
+            paste("Congratulations <br>", cards$names[[1]], "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)",
-            "Congratulations <br> Player 2 wins
+            <br> Kumar Padmanabh Singh (Picture above)"),
+            paste("Congratulations <br>", cards$names[[2]], "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)"
+            <br> Kumar Padmanabh Singh (Picture above)")
           )
         )
       ),
@@ -80,20 +82,22 @@ game_over_tokens <- function(input, output, cards) {
           "The Game is over.
           <br> 3 goods have been sold out!
           <br>
-          Money Player 1:",
+          Money", cards$names[[1]],
+          ":",
           cards$money[[1]],
           "<br>
-          <br> Money Player 2:",
+          <br> Money", cards$names[[2]],
+          ":",
           cards$money[[2]],
           "<br> <br>",
           ifelse(
             cards$money[[1]] > cards$money[[2]],
-            "Congratulations <br> Player 1 wins
+            paste("Congratulations <br>", cards$names[[1]], "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)",
-            "Congratulations <br> Player 2 wins
+            <br> Kumar Padmanabh Singh (Picture above)"),
+            paste("Congratulations <br>", cards$names[[2]], "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)"
+            <br> Kumar Padmanabh Singh (Picture above)")
           )
         )
       ),
