@@ -8,9 +8,8 @@
 #' @note  For more FUN while playing play the game in full screen mode!
 #'
 #' @examples
-#' \dontrun{
-#' start_jaipur("Donald", "Barack")
-#' }
+#' #start_jaipur("Donald", "Barack")
+#'
 #'
 #' @export start_jaipur
 start_jaipur <-
