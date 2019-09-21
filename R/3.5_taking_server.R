@@ -2,11 +2,7 @@
 
 #' @keywords internal taking_selling_swapping_server
 taking_selling_swapping_server <-
-  function(input,
-           output,
-           session,
-           cards,
-           parent_session) {
+  function(input, output, session, cards, parent_session) {
     # If Player 1 takes a cards
     observeEvent(input$take_player_1, {
       req(input$market_player_1)

@@ -22,25 +22,34 @@ game_over_cards <- function(input, output, cards) {
       title = "GAME OVER",
       text = HTML(
         paste(
-          "The Game is over.
-          <br> All cards have been taken!
+          "The Game is over. All cards have been taken!
           <br>
-          Money", cards$names[[1]],
+          Money",
+          cards$names[[1]],
           ":",
           cards$money[[1]],
           "<br>
-          <br> Money", cards$names[[2]],
+          <br> Money",
+          cards$names[[2]],
           ":",
           cards$money[[2]],
           "<br> <br>",
           ifelse(
             cards$money[[1]] > cards$money[[2]],
-            paste("Congratulations <br>", cards$names[[1]], "wins
+            paste(
+              "Congratulations <br>",
+              cards$names[[1]],
+              "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)"),
-            paste("Congratulations <br>", cards$names[[2]], "wins
+            <br> Kumar Padmanabh Singh (Picture above)"
+            ),
+            paste(
+              "Congratulations <br>",
+              cards$names[[2]],
+              "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)")
+            <br> Kumar Padmanabh Singh (Picture above)"
+            )
           )
         )
       ),
@@ -79,25 +88,37 @@ game_over_tokens <- function(input, output, cards) {
       title = "GAME OVER",
       text = HTML(
         paste(
-          "The Game is over.
-          <br> 3 goods have been sold out!
+          "The Game is over. 3 goods have been sold out!
           <br>
-          Money", cards$names[[1]],
+          Money",
+          cards$names[[1]],
           ":",
           cards$money[[1]],
           "<br>
-          <br> Money", cards$names[[2]],
+          <br>
+          Money",
+          cards$names[[2]],
           ":",
           cards$money[[2]],
-          "<br> <br>",
+          "<br>
+          <br>",
           ifelse(
             cards$money[[1]] > cards$money[[2]],
-            paste("Congratulations <br>", cards$names[[1]], "wins
+            paste(
+              "Congratulations
+              <br>",
+              cards$names[[1]],
+              "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)"),
-            paste("Congratulations <br>", cards$names[[2]], "wins
+              Kumar Padmanabh Singh"
+            ),
+            paste(
+              "Congratulations <br>",
+              cards$names[[2]],
+              "wins
             <br> You are now the personal trader of the Maharaja,
-            <br> Kumar Padmanabh Singh (Picture above)")
+              Kumar Padmanabh Singh"
+            )
           )
         )
       ),

@@ -155,15 +155,13 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Last Drop",
       cards = cards$last_swap,
-      x = list(
-        c(0, 1.5),
-        c(2, 3.5),
-        c(4, 5.5),
-        c(6, 7.5),
-        c(8, 9.5),
-        c(10, 11.5),
-        c(12, 13.5)
-      ),
+      x = list(c(0, 1.5),
+               c(2, 3.5),
+               c(4, 5.5),
+               c(6, 7.5),
+               c(8, 9.5),
+               c(10, 11.5),
+               c(12, 13.5)),
       x_limit = c(0, 14),
       cards_color = color_jaipur_cards(cards$last_swap)
     )
@@ -187,15 +185,13 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Hand Player 1",
       cards = cards$hands[[1]],
-      x = list(
-        c(0, 1.5),
-        c(2, 3.5),
-        c(4, 5.5),
-        c(6, 7.5),
-        c(8, 9.5),
-        c(10, 11.5),
-        c(12, 13.5)
-      ),
+      x = list(c(0, 1.5),
+               c(2, 3.5),
+               c(4, 5.5),
+               c(6, 7.5),
+               c(8, 9.5),
+               c(10, 11.5),
+               c(12, 13.5)),
       x_limit = c(0, 14),
       cards_color = color_jaipur_cards(cards$hands[[1]])
     )
@@ -205,15 +201,13 @@ jaipur_server <- function(input, output, session) {
     playing_cards_plot(
       title = "Hand Player 2",
       cards = cards$hands[[2]],
-      x = list(
-        c(0, 1.5),
-        c(2, 3.5),
-        c(4, 5.5),
-        c(6, 7.5),
-        c(8, 9.5),
-        c(10, 11.5),
-        c(12, 13.5)
-      ),
+      x = list(c(0, 1.5),
+               c(2, 3.5),
+               c(4, 5.5),
+               c(6, 7.5),
+               c(8, 9.5),
+               c(10, 11.5),
+               c(12, 13.5)),
       x_limit = c(0, 14),
       cards_color = color_jaipur_cards(cards$hands[[2]])
     )
@@ -238,7 +232,6 @@ jaipur_server <- function(input, output, session) {
   output$Tokens <- renderTable({
     (cards$tokens)
   })
-
 
   # Restart the game when clicking on restart
   observeEvent(input$restart, {

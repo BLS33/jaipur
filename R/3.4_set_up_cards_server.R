@@ -3,6 +3,7 @@
 #' @keywords internal set_up_cards_server
 set_up_cards_server <- function(input, output, session, cards) {
 
+
   # market gets filled up with first two cards of the deck
   cards$market <- c(cards$market, cards$deck[1:2])
 
