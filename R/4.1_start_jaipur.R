@@ -5,7 +5,7 @@
 #' @param Player_one Name of Player one
 #' @param Player_two Name of Player two
 #'
-#' @note  For more FUN while playing call play the game in full screen mode!
+#' @note  For more FUN while playing play the game in full screen mode!
 #'
 #' @export start_jaipur
 start_jaipur <-
@@ -14,7 +14,8 @@ start_jaipur <-
     if (typeof(Player_one) != "character") {
       stop("Your input has to be of type character")
     } else {
-      shiny::shinyApp(ui = jaipur_ui(Player_one, Player_two), server = jaipur_server)
+      shiny::shinyApp(ui = jaipur_ui(Player_one, Player_two),
+                      server = jaipur_server)
 
     }
   }
