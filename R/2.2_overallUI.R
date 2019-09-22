@@ -5,7 +5,6 @@
 jaipur_ui <- function(name1, name2) {
   fluidPage(
     shinyalert::useShinyalert(),
-    shinyjs::useShinyjs(),
 
     sidebarLayout(
       ### ---   Sidebar  for Market, Tokens, Camels, Restart   --- ###
