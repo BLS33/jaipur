@@ -1,4 +1,4 @@
-# Overall UI which integrates moduleUI's
+### --- Overall UI which integrates moduleUI's --- ###
 
 #' @keywords internal jaipur_ui
 

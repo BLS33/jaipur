@@ -1,6 +1,6 @@
-# Creat UI for Player 1
+### --- Sub UI for Player 1 --- ###
 
-#' @keywords internal player1_UI
+#' @keywords internal
 player1_UI <- function(id) {
   # define Namespace
   ns <- NS(id)
@@ -33,7 +33,9 @@ player1_UI <- function(id) {
 
 }
 
-# Creat UI for Player 2 seperately as Id's have to be unique
+
+### --- Sub UI for Player 2 (unique inputID's) --- ###
+
 #' @keywords internal player2_UI
 player2_UI <- function(id) {
   # define Namespace

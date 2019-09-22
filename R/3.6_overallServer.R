@@ -1,6 +1,6 @@
 ### --- Overall Server which calls defined modules --- ###
 
-#' @keywords internal jaipur_server
+#' @keywords internal
 jaipur_server <- function(input, output, session) {
   # Show the Rules of the Game with a 'setup' button which sets up the Game
   showModal(modalDialog(
@@ -26,6 +26,7 @@ jaipur_server <- function(input, output, session) {
     # put Count to 1 - count is requiered for updating tabsetPanels
     count = 1,
 
+    # default input for Players names if no input is given
     names = list(name1 = "Player one",
                  name2 = "Player two"),
 
@@ -51,7 +52,7 @@ jaipur_server <- function(input, output, session) {
       Silver = as.integer(c(5, 5, 5, 5, 5, NA, NA, NA, NA, NA))
     ),
 
-    #Define the extras for selling more than 3 cards
+    # Define the extras for selling more than 3 cards
     extras = data.frame(
       three = c(sample(c(1, 2, 3, 1, 2, 3, 2)), NA),
       four = c(sample(c(4, 5, 6, 4, 5, 6)), NA, NA),
@@ -61,11 +62,11 @@ jaipur_server <- function(input, output, session) {
     # Define the market - first with 3 Camels
     market = c("Camel", "Camel", "Camel"),
 
-    # Define Hand of Player 1
+    # Define Hand of Players
     hands = list(hand_player_1 = character(0),
                  hand_player_2 = character(0)),
 
-    # Define Number of Camels of Player 1
+    # Create camel herds
     camels = list(camels_player_1 = 0,
                   camels_player_2 = 0),
 
@@ -83,6 +84,7 @@ jaipur_server <- function(input, output, session) {
     last_swap = c()
   )
 
+  # when Name input is given, the names get updated
   observeEvent(input$name1, {
     req(input$name1)
     cards$names[[1]] <- input$name1
@@ -100,7 +102,7 @@ jaipur_server <- function(input, output, session) {
     removeModal()
   })
 
-  # Call player1_tab_server to create tabsetPanel of Player 1
+  # Call input_server to create tabsetPanelfor Players
   callModule(players_input_server, 'jaipur', cards)
 
   # call action-servers for when player take, sell or swap Cards
@@ -109,12 +111,11 @@ jaipur_server <- function(input, output, session) {
              cards,
              parent_session = session)
 
-  # Move on to next player after seperating Panel
+  # When Players click 'continue' Move on to next player after seperating Panel
   observeEvent(input$continue, {
     cards$count <- cards$count + 1
 
-    # # the Panels get updated and hidden according to the count which is
-
+    # the Panels get updated and hidden according to the count which is
     if ((cards$count) %% 2 == 0) {
       hideTab(inputId = "inTabset", target = "Player 1")
       showTab(inputId = "inTabset", target = "Player 2")
@@ -131,7 +132,7 @@ jaipur_server <- function(input, output, session) {
     game_over_tokens(input, output, cards)
   })
 
-  # Print the Player's last action
+  # Print Player's last action
   output$opponents_action <- renderText({
     paste(cards$action_text)
   })
@@ -167,6 +168,7 @@ jaipur_server <- function(input, output, session) {
     )
   })
 
+  ### --- Plot outputs --- ###
   output$marketplot <- renderPlot({
     playing_cards_plot(
       title = "Market",
@@ -213,12 +215,11 @@ jaipur_server <- function(input, output, session) {
     )
   })
 
-  # Output for camels Player 1
+  # Output for Player's Camels
   output$camels_player_1 <- renderPrint({
     cards$camels[[1]]
   })
 
-  # output for camels Player 2
   output$camels_player_2 <- renderPrint({
     cards$camels[[2]]
   })

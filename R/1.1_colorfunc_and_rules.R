@@ -1,8 +1,8 @@
 #' @import shiny
 
-### --- color player's hand --- ###
+### --- color function for playing cards --- ###
 
-#' @keywords internal color_jaipur_cards
+#' @keywords internalcolor_jaipur_cards
 color_jaipur_cards <- function(x) {
   card_color <- rep(NA, length(x))
 
@@ -35,6 +35,8 @@ color_jaipur_cards <- function(x) {
   return(card_color)
 }
 
+
+### --- plot function for playing cards --- ###
 
 #' @title Plot your playing cards
 #'
@@ -93,6 +95,8 @@ playing_cards_plot <- function(title = "Plot Title",
   }
 }
 
+
+### --- jaipur rules --- ###
 
 rules <- "You are one of the two most powerful traders in the city of Jaipur,
         the capital of Rajasthan!
