@@ -38,7 +38,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://media-cdn.tripadvisor.com/media/photo-s/0d/d3/a7/aa/each-camel-with-their.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Camel.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -252,7 +252,6 @@ selling <- function(input, output, cards, number, parent_session) {
                    - 1, length(vals[[number]]) - 2] <- NA
     }
 
-    shinyjs::delay(15000,
     # Success message that the sale was successfull
     shinyalert::shinyalert(
       title = "Success",
@@ -266,11 +265,11 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = system.file("images/Gold.jpg", "jaipur"),
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Gold.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
-    ))
+    )
 
     # update textOutput so the opponent sees which action was taken
     cards$action_text <-
