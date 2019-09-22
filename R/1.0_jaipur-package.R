@@ -1,6 +1,6 @@
 #' Use R for Playing the card Game Jaipur
 #'
-#' This is a R implementation of the card game Jaipur
+#' This is the R implementation of the card game Jaipur.
 #'
 #' @name jaipur_package
 #' @aliases jaipur
