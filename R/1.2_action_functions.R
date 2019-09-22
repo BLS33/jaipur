@@ -68,7 +68,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -85,7 +85,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -124,7 +124,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://images-na.ssl-images-amazon.com/images/I/81i4E15iulL._SL1500_.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Take_cards.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -167,7 +167,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -190,7 +190,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -206,7 +206,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -312,7 +312,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -328,7 +328,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -344,7 +344,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -373,7 +373,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://giftsforcardplayers.com/wp-content/uploads/2017/09/card-game-941430_960_720.jpg",
+      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Swap_cards.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
