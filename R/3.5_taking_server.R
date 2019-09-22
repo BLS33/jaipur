@@ -1,4 +1,4 @@
-# Module for taking  cards
+#### --- Module for taking  cards --- ###
 
 #' @keywords internal taking_selling_swapping_server
 taking_selling_swapping_server <-

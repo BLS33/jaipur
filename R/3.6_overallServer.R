@@ -1,4 +1,4 @@
-# Overall Server which calls defined modules
+### --- Overall Server which calls defined modules --- ###
 
 #' @keywords internal jaipur_server
 jaipur_server <- function(input, output, session) {

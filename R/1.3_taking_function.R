@@ -1,4 +1,6 @@
-# Function for taking cards - 'number' identifies Player
+
+### --- Function for taking cards --- ###
+# with 'number' we can access the desired player (...)[[number]]
 
 #' @keywords internal taking
 taking <- function(input, output, cards, number, parent_session) {
@@ -6,10 +8,9 @@ taking <- function(input, output, cards, number, parent_session) {
   mar <- list(c(input$market_player_1),
               c(input$market_player_2))
 
-  # If the Player's take Camels, they are not just takin 1 Camel, but all
-  # Camels on the market
+  # If the Player's take Camels, they are taking all Camels on market
   if (all(mar[[number]] == "Camel") == TRUE) {
-    # Create variable which captures all Camels for easier access
+    # Create variable which captures Camels for easier access
     cam1 <- length(which(cards$market[1:5] == "Camel"))
 
     cards$last_action <- rep(c("Camel"), times = cam1)
@@ -134,8 +135,7 @@ taking <- function(input, output, cards, number, parent_session) {
         updateTabsetPanel(session = parent_session,
                           "inTabset", selected = "Next Player")
 
-        # update textOutput which is printed on intermediate Panel so
-        # the opponent sees which action was taken
+        # update textOutput so the opponent sees which action was taken
         cards$action_text <-
           paste(
             cards$names[[number]],
@@ -155,7 +155,6 @@ taking <- function(input, output, cards, number, parent_session) {
 
 
 ### ---   Selling function   --- ###
-# Function for taking cards - 'number' identifies Player
 
 #' @keywords internal selling
 selling <- function(input, output,cards, number, parent_session) {
@@ -240,8 +239,7 @@ selling <- function(input, output,cards, number, parent_session) {
         # If Player's sell more than 3 of 1 Good they get extra money
         if (length(vals[[number]]) >= 3 &&
             length(vals[[number]]) <= 5) {
-          # Depending on whether player's sell 3, 4, 5, or >5 Goods, they
-          # get extra money
+
           cards$money[[number]] <-
             sum(cards$money[[number]], cards$extras[1, length(vals[[number]]) - 2])
 
@@ -249,8 +247,7 @@ selling <- function(input, output,cards, number, parent_session) {
           cards$extras[which(is.na(cards$extras[, length(vals[[number]]) - 2]) == T)
                        - 1, length(vals[[number]]) - 2] <- NA
         } else{
-          # If the Player's sell >5 Goods, they get the same extra than for
-          # selling exactly 5 Goods
+          # If the Player's sell >5 Goods, they get the same extra
           if (length(vals[[number]]) >= 6) {
             cards$money[[number]] <-
               sum(cards$money[[number]], cards$extras[[1, 3]])
@@ -279,8 +276,7 @@ selling <- function(input, output,cards, number, parent_session) {
           animation = TRUE
         )
 
-        # update textOutput which is printed on intermediate Panel so
-        # the opponent sees which action was taken
+        # update textOutput so the opponent sees which action was taken
         cards$action_text <-
           paste(
             cards$names[[number]],
@@ -302,13 +298,10 @@ selling <- function(input, output,cards, number, parent_session) {
 
 
 ### ---   swapping function   --- ###
-# 'number' is given for the players number
-
 
 #' @keywords internal swapping
 swapping <- function(input, output, cards, number, parent_session) {
   # Create list that capture the player's input
-  # with 'number' we can access the desired player (...)[[number]]
   vals <- list(c(input$hand_player_1),
                c(input$hand_player_2))
 

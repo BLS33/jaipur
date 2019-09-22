@@ -1,6 +1,6 @@
 #' @import shiny
 
-#### color player 1's hand ###
+### --- color player's hand --- ###
 
 #' @keywords internal color_jaipur_cards
 color_jaipur_cards <- function(x) {
