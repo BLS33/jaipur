@@ -30,7 +30,7 @@ taking <- function(input, output, cards, number, parent_session) {
       title = "Success",
       text = HTML(
         cards$names[[number]],
-        "You took the camels, <br>  now it is",
+        "! You took the camels, <br>  now it is",
         ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
         "'s turn"
       ),
@@ -113,7 +113,7 @@ taking <- function(input, output, cards, number, parent_session) {
       text = HTML(
         paste(
           cards$names[[number]],
-          "You successfully took",
+          "! You successfully took",
           mar[[number]],
           "<br>  now it is",
           ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
@@ -257,7 +257,7 @@ selling <- function(input, output, cards, number, parent_session) {
       title = "Success",
       text = HTML(
         cards$names[[number]],
-        "Your sale was successful, <br>  now it is",
+        "! Your sale was successful, <br>  now it is",
         ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
         "'s turn"
       ),
@@ -364,7 +364,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       text = HTML(
         paste(
           cards$names[[number]],
-          "Your swap was successful, <br> now it is",
+          "! Your swap was successful, <br> now it is",
           ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
           "'s turn"
         )
