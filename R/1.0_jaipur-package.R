@@ -2,8 +2,7 @@
 #'
 #' This is the R implementation of the card game Jaipur.
 #'
-#' @name jaipur_package
-#' @aliases jaipur
+#' @name jaipur-package
 #' @docType package
 #' @author Anton Thielmann, Brandon Schwab
 #' @keywords package
