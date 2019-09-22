@@ -7,12 +7,12 @@ game_over_cards <- function(input, output, cards) {
     # Player with more camels gets 5 extra coins
     if (cards$camels[[1]] > cards$camels[[2]]) {
       cards$money[[1]] <- cards$money[[1]] + 5
-    } else{
+    } else {
       # If both Player's have same amount of camels nothing happens
       if (cards$camels[[1]] == cards$camels[[2]]) {
         cards$money[[1]] <- cards$money[[1]]
         cards$money[[2]] <- cards$money[[2]]
-      } else{
+      } else {
         cards$money[[2]] <- cards$money[[1]] + 5
       }
     }
@@ -71,16 +71,16 @@ game_over_cards <- function(input, output, cards) {
 #' @keywords internal
 game_over_tokens <- function(input, output, cards) {
   # End game if 3 tokens are empty
-  if (((sum(is.na(cards$tokens[1, ]))) >= 3) == TRUE) {
+  if (((sum(is.na(cards$tokens[1,]))) >= 3) == TRUE) {
     # Player with more camels gets 5 extra coins
     if (cards$camels[[1]] > cards$camels[[2]]) {
       cards$money[[1]] <- cards$money[[1]] + 5
-    } else{
+    } else {
       # If both Player's have same amount of camels nothing happens
       if (cards$camels[[1]] == cards$camels[[2]]) {
         cards$money[[1]] <- cards$money[[1]]
         cards$money[[2]] <- cards$money[[2]]
-      } else{
+      } else {
         cards$money[[2]] <- cards$money[[1]] + 5
       }
     }
