@@ -8,7 +8,7 @@ taking <- function(input, output, cards, number, parent_session) {
   mar <- list(c(input$market_player_1),
               c(input$market_player_2))
 
-  # If the Player's take Camels, they are taking all Camels on market
+  #If the Players take Camels, they take all Camels on market
   if (all(mar[[number]] == "Camel") == TRUE) {
     # Create variable which captures Camels for easier access
     cam1 <- length(which(cards$market[1:5] == "Camel"))
@@ -58,98 +58,93 @@ taking <- function(input, output, cards, number, parent_session) {
       )
 
     # If the Player's do not take a Camel
-  } else{
-    # Make sure the Players can only take 1 Cards
-    if (length(mar[[number]]) != 1) {
-      # Errormessage if they try to take several Cards
-      shinyalert::shinyalert(
-        title = "Error",
-        text = "You must only take 1 Card",
-        html = TRUE,
-        type = "error",
-        showConfirmButton = TRUE,
-        timer = 0,
-        imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
-        imageWidth = 400,
-        imageHeight = 400,
-        animation = TRUE
-      )
-    } else{
-      # Make sure Player's only carry seven cards
-      if ((length(cards$hands[[number]]) >= 7)) {
-        # Errormessage if they already carry 7 Cards
-        shinyalert::shinyalert(
-          title = "Error",
-          text = HTML("Don't be greedy!
+  } else if (length(mar[[number]]) != 1) {
+    # Errormessage if they try to take several Cards
+    shinyalert::shinyalert(
+      title = "Error",
+      text = "You must only take 1 Card",
+      html = TRUE,
+      type = "error",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/
+        06/allowed-featured.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
+    # Make sure Player's only carry seven cards
+  } else if ((length(cards$hands[[number]]) >= 7)) {
+    # Errormessage if they already carry 7 Cards
+    shinyalert::shinyalert(
+      title = "Error",
+      text = HTML("Don't be greedy!
                       <br> You cannot take more than 7 Goods"),
-          html = TRUE,
-          type = "error",
-          showConfirmButton = TRUE,
-          timer = 0,
-          imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
-          imageWidth = 400,
-          imageHeight = 400,
-          animation = TRUE
+      html = TRUE,
+      type = "error",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
+    # If the Players normally take Cards
+  } else{
+    # append market input to last_action, to plot action in tabPanel
+    cards$last_action <-
+      c(input$market_player_1, input$market_player_2)
+
+    # append the chosen Cards to Player's hand
+    cards$hands[[number]] <-
+      c(cards$hands[[number]], mar[[number]])
+
+    # replace chosen card on the market with new card from the deck
+    cards$market[which(cards$market == mar[[number]])[1]] <-
+      cards$deck[1]
+
+    # remove card out of the deck
+    cards$deck <- cards$deck[-1]
+
+    # Successmessage
+    shinyalert::shinyalert(
+      title = "Success",
+      text = HTML(
+        paste(
+          cards$names[[number]],
+          "You successfully took",
+          mar[[number]],
+          "<br>  now it is",
+          ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
+          "'s turn"
         )
-        # If the Player's normally take a Cards
-      } else{
-        # append market input to last_action, to plot action in tabPanel
-        cards$last_action <-
-          c(input$market_player_1, input$market_player_2)
+      ),
+      html = TRUE,
+      type = "success",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://images-na.ssl-images-amazon.com/images/I/81i4E15iulL._SL1500_.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
 
-        # append the chosen Cards to Player's hand
-        cards$hands[[number]] <-
-          c(cards$hands[[number]], mar[[number]])
+    # Update the TabsetPanel, to the intermediate Panel
+    updateTabsetPanel(session = parent_session,
+                      "inTabset", selected = "Next Player")
 
-        # replace chosen card on the market with new card from the deck
-        cards$market[which(cards$market == mar[[number]])[1]] <-
-          cards$deck[1]
+    # update textOutput so the opponent sees which action was taken
+    cards$action_text <-
+      paste(
+        cards$names[[number]],
+        "took",
+        mar[[number]],
+        "now it is your turn",
+        ifelse(number == 1, cards$names[[2]], cards$names[[1]])
+      )
 
-        # remove card out of the deck
-        cards$deck <- cards$deck[-1]
-
-        # Successmessage
-        shinyalert::shinyalert(
-          title = "Success",
-          text = HTML(
-            paste(
-              cards$names[[number]],
-              "You successfully took",
-              mar[[number]],
-              "<br>  now it is",
-              ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
-              "'s turn"
-            )
-          ),
-          html = TRUE,
-          type = "success",
-          showConfirmButton = TRUE,
-          timer = 0,
-          imageUrl = "https://images-na.ssl-images-amazon.com/images/I/81i4E15iulL._SL1500_.jpg",
-          imageWidth = 400,
-          imageHeight = 400,
-          animation = TRUE
-        )
-
-        # Update the TabsetPanel, to the intermediate Panel
-        updateTabsetPanel(session = parent_session,
-                          "inTabset", selected = "Next Player")
-
-        # update textOutput so the opponent sees which action was taken
-        cards$action_text <-
-          paste(
-            cards$names[[number]],
-            "took",
-            mar[[number]],
-            "now it is your turn",
-            ifelse(number == 1, cards$names[[2]], cards$names[[1]])
-          )
-
-        # Update variables for plotting players input
-        cards$last_swap <- c()
-
-      }
-    }
+    # Update variables for plotting players input
+    cards$last_swap <- c()
   }
 }
 
@@ -353,8 +348,7 @@ swapping <- function(input, output, cards, number, parent_session) {
           animation = TRUE
         )
       } else{
-        # normal swapping, the chosen cards are put into the market and the
-        # Players Hands accordingly
+        # normal swapping, chosen cards are put into market and hands
         cards$market[which(cards$market %in% mar[[number]])
                      [1:length(vals[[number]])]] <- vals[[number]]
 
