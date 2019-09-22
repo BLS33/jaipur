@@ -252,7 +252,7 @@ selling <- function(input, output, cards, number, parent_session) {
                    - 1, length(vals[[number]]) - 2] <- NA
     }
 
-    shinyjs::delay(15,
+    shinyjs::delay(15000,
     # Success message that the sale was successfull
     shinyalert::shinyalert(
       title = "Success",
