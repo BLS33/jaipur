@@ -90,7 +90,7 @@ taking <- function(input, output, cards, number, parent_session) {
       animation = TRUE
     )
     # If the Players normally take Cards
-  } else{
+  } else {
     # append market input to last_action, to plot action in tabPanel
     cards$last_action <-
       c(input$market_player_1, input$market_player_2)
@@ -172,85 +172,83 @@ selling <- function(input, output,cards, number, parent_session) {
       animation = TRUE
     )
 
-  } else{
     # Make sure players must at least sell two goods of silver, gold, or diamond
-    if ((vals[[number]][1] == "Silver" |
-         vals[[number]][1] == "Gold" |
-         vals[[number]][1] == "Diamond") &
-        length(vals[[number]]) == 1) {
-      # Errormessage if they try to sell 1 of Gold/Diamonds/Silver
-      shinyalert::shinyalert(
-        title = "Error",
-        text = HTML(
-          "You have to sell more than 1 <br>
+  } else if ((vals[[number]][1] == "Silver" |
+              vals[[number]][1] == "Gold" |
+              vals[[number]][1] == "Diamond") &
+             length(vals[[number]]) == 1) {
+    # Errormessage if they try to sell 1 of Gold/Diamonds/Silver
+    shinyalert::shinyalert(
+      title = "Error",
+      text = HTML(
+        "You have to sell more than 1 <br>
         from the precious goods like <br> Silver"
-        ),
-        html = TRUE,
-        type = "error",
-        showConfirmButton = TRUE,
-        timer = 0,
-        imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
-        imageWidth = 400,
-        imageHeight = 400,
-        animation = TRUE
-      )
-    } else{
-      # If the Good is already sold out the Player's can't sell it anymore
-      if (any(is.na(cards$tokens[1:length(vals[[number]]),
-                                 vals[[number]]])) == TRUE) {
-        shinyalert::shinyalert(
-          title = "Error",
-          text = "Sold out",
-          html = TRUE,
-          type = "error",
-          showConfirmButton = TRUE,
-          timer = 0,
-          imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
-          imageWidth = 400,
-          imageHeight = 400,
-          animation = TRUE
-        )
-      } else{
-        # Player's normally sell Good -Remove sold Goods from Player's hands
-        cards$hands[[number]] <-
-          cards$hands[[number]][-which(cards$hands[[number]] %in% vals[[number]])
-                                [1:length(vals[[number]])]]
+      ),
+      html = TRUE,
+      type = "error",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
 
-        # Add the revenues to Player's money
-        cards$money[[number]] <-
-          cards$money[[number]] + sum(cards$tokens[1:length(vals[[number]]),
-                                                   vals[[number]][1]])
+    # If the Good is already sold out the Player's can't sell it anymore
+  } else if (any(is.na(cards$tokens[1:length(vals[[number]]),
+                                    vals[[number]]])) == TRUE) {
+    shinyalert::shinyalert(
+      title = "Error",
+      text = "Sold out",
+      html = TRUE,
+      type = "error",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
+  } else {
+    # Player's normally sell Good -Remove sold Goods from Player's hands
+    cards$hands[[number]] <-
+      cards$hands[[number]][-which(cards$hands[[number]] %in% vals[[number]])
+                            [1:length(vals[[number]])]]
 
-        # Remove the sold Goods from the Tokens
-        cards$tokens[, vals[[number]][1]] <-
-          cards$tokens[c((length(vals[[number]]) + 1):10,
-                         rep(NA, times = length(vals[[number]]))),
-                       vals[[number]][1]]
+    # Add the revenues to Player's money
+    cards$money[[number]] <-
+      cards$money[[number]] + sum(cards$tokens[1:length(vals[[number]]),
+                                               vals[[number]][1]])
 
-        # Update the TabsetPanel, to the intermediate Panel
-        updateTabsetPanel(session = parent_session,
-                          "inTabset", selected = "Next Player")
+    # Remove the sold Goods from the Tokens
+    cards$tokens[, vals[[number]][1]] <-
+      cards$tokens[c((length(vals[[number]]) + 1):10,
+                     rep(NA, times = length(vals[[number]]))),
+                   vals[[number]][1]]
 
-        # If Player's sell more than 3 of 1 Good they get extra money
-        if (length(vals[[number]]) >= 3 &&
-            length(vals[[number]]) <= 5) {
+    # Update the TabsetPanel, to the intermediate Panel
+    updateTabsetPanel(session = parent_session,
+                      "inTabset", selected = "Next Player")
 
-          cards$money[[number]] <-
-            sum(cards$money[[number]], cards$extras[1, length(vals[[number]]) - 2])
+    # If Player's sell more than 3 of 1 Good they get extra money
+    if (length(vals[[number]]) >= 3 &&
+        length(vals[[number]]) <= 5) {
+      cards$money[[number]] <-
+        sum(cards$money[[number]], cards$extras[1, length(vals[[number]]) - 2])
 
-          # The extras get deleted proportionally
-          cards$extras[which(is.na(cards$extras[, length(vals[[number]]) - 2]) == T)
-                       - 1, length(vals[[number]]) - 2] <- NA
-        } else{
-          # If the Player's sell >5 Goods, they get the same extra
-          if (length(vals[[number]]) >= 6) {
-            cards$money[[number]] <-
-              sum(cards$money[[number]], cards$extras[[1, 3]])
+      # The extras get deleted proportionally
+      cards$extras[which(is.na(cards$extras[, length(vals[[number]]) - 2]) == T)
+                   - 1, length(vals[[number]]) - 2] <- NA
 
-            cards$extras[which(is.na(cards$extras[, 3]) == T)
-                         - 1, length(vals[[number]]) - 2] <- NA
-          }
-        }
+      # If the Player's sell >5 Goods, they get the same extra
+    } else if (length(vals[[number]]) >= 6) {
+      cards$money[[number]] <-
+        sum(cards$money[[number]], cards$extras[[1, 3]])
+
+      cards$extras[which(is.na(cards$extras[, 3]) == T)
+                   - 1, length(vals[[number]]) - 2] <- NA
+    }
+  }
 
         # Success message that the sale was successfull
         shinyalert::shinyalert(
@@ -287,9 +285,8 @@ selling <- function(input, output,cards, number, parent_session) {
 
         cards$last_action <- c()
       }
-    }
-  }
-}
+
+
 
 
 ### ---   swapping function   --- ###
