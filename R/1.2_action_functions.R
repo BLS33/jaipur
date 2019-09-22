@@ -252,6 +252,7 @@ selling <- function(input, output, cards, number, parent_session) {
                    - 1, length(vals[[number]]) - 2] <- NA
     }
 
+    shinyjs::delay(15,
     # Success message that the sale was successfull
     shinyalert::shinyalert(
       title = "Success",
@@ -269,7 +270,7 @@ selling <- function(input, output, cards, number, parent_session) {
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
-    )
+    ))
 
     # update textOutput so the opponent sees which action was taken
     cards$action_text <-
