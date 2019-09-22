@@ -1,9 +1,12 @@
 Package: jaipur
 Type: Package
-Title: Jaipur card game
+Title: Play the Jaipur card game in R
 Version: 1.0
-Author: Anton Thielmann, Brandon Schwab
-Maintainer: Anton Thielmann <Anton.Thielmann@stud.uni-goettingen.de>
+Authors@R: as.person(c(
+    "Anton Thielmann <antonthielmann@t-online.de> [aut, cre]",
+    "Brandon Schwab <brandon.schwab@stud.uni-goettingen.de> [aut]"
+  ))
+Maintainer: Anton Thielmann <antonthielmann@t-online.de>
 Description: Jaipur is a card game for two players. 
     It was created by Sébastien Pauchon in 2009 and published by Asmodee.
     Players assume the roles of merchants in Jaipur, the capital of Rajasthan.
