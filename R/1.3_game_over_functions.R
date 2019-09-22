@@ -37,14 +37,14 @@ game_over_cards <- function(input, output, cards) {
           ifelse(
             cards$money[[1]] > cards$money[[2]],
             paste(
-              "Congratulations <br>",
+              "Congratulations:",
               cards$names[[1]],
               "wins
             <br> You are now the personal trader of the Maharaja,
             <br> Kumar Padmanabh Singh (Picture above)"
             ),
             paste(
-              "Congratulations <br>",
+              "Congratulations:",
               cards$names[[2]],
               "wins
             <br> You are now the personal trader of the Maharaja,
@@ -107,15 +107,14 @@ game_over_tokens <- function(input, output, cards) {
           ifelse(
             cards$money[[1]] > cards$money[[2]],
             paste(
-              "Congratulations
-              <br>",
+              "Congratulations:",
               cards$names[[1]],
               "wins
             <br> You are now the personal trader of the Maharaja,
               Kumar Padmanabh Singh"
             ),
             paste(
-              "Congratulations <br>",
+              "Congratulations:",
               cards$names[[2]],
               "wins
             <br> You are now the personal trader of the Maharaja,

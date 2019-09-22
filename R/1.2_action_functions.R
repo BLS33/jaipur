@@ -152,7 +152,7 @@ taking <- function(input, output, cards, number, parent_session) {
 ### ---   Selling function   --- ###
 
 #' @keywords internal selling
-selling <- function(input, output,cards, number, parent_session) {
+selling <- function(input, output, cards, number, parent_session) {
   # Create list with input for easier access
   vals <- list(c(input$hand_player_1),
                c(input$hand_player_2))
@@ -239,52 +239,53 @@ selling <- function(input, output,cards, number, parent_session) {
       # The extras get deleted proportionally
       cards$extras[which(is.na(cards$extras[, length(vals[[number]]) - 2]) == T)
                    - 1, length(vals[[number]]) - 2] <- NA
+    }
 
-      # If the Player's sell >5 Goods, they get the same extra
-    } else if (length(vals[[number]]) >= 6) {
+    # If the Player's sell >5 Goods, they get the same extra
+    else if (length(vals[[number]]) >= 6) {
       cards$money[[number]] <-
         sum(cards$money[[number]], cards$extras[[1, 3]])
 
       cards$extras[which(is.na(cards$extras[, 3]) == T)
                    - 1, length(vals[[number]]) - 2] <- NA
     }
+
+    # Success message that the sale was successfull
+    shinyalert::shinyalert(
+      title = "Success",
+      text = HTML(
+        cards$names[[number]],
+        "Your sale was successful, <br>  now it is",
+        ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
+        "'s turn"
+      ),
+      html = TRUE,
+      type = "success",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://i.pinimg.com/originals/c7/8f/5f/c78f5ff94da025c552d2a1f0fc0ab82d.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
+
+    # update textOutput so the opponent sees which action was taken
+    cards$action_text <-
+      paste(
+        cards$names[[number]],
+        "sold",
+        length(vals[[number]]),
+        vals[[number]][1],
+        "now it is your turn",
+        ifelse(number == 1, cards$names[[2]], cards$names[[1]])
+      )
+
+    cards$last_swap <-
+      c(input$hand_player_1, input$hand_player_2)
+
+    cards$last_action <- c()
   }
-
-        # Success message that the sale was successfull
-        shinyalert::shinyalert(
-          title = "Success",
-          text = HTML(
-            cards$names[[number]],
-            "Your sale was successful, <br>  now it is",
-            ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
-            "'s turn"
-          ),
-          html = TRUE,
-          type = "success",
-          showConfirmButton = TRUE,
-          timer = 0,
-          imageUrl = "https://i.pinimg.com/originals/c7/8f/5f/c78f5ff94da025c552d2a1f0fc0ab82d.jpg",
-          imageWidth = 400,
-          imageHeight = 400,
-          animation = TRUE
-        )
-
-        # update textOutput so the opponent sees which action was taken
-        cards$action_text <-
-          paste(
-            cards$names[[number]],
-            "sold",
-            length(vals[[number]]),
-            vals[[number]][1],
-            "now it is your turn",
-            ifelse(number == 1, cards$names[[2]], cards$names[[1]])
-          )
-
-        cards$last_swap <-
-          c(input$hand_player_1, input$hand_player_2)
-
-        cards$last_action <- c()
-      }
+}
 
 
 
@@ -314,83 +315,85 @@ swapping <- function(input, output, cards, number, parent_session) {
       imageHeight = 400,
       animation = TRUE
     )
-  } else{
-    # Make sure Players can only swap card by card
-    if (length(vals[[number]]) != length(mar[[number]])) {
-      shinyalert::shinyalert(
-        title = "Error",
-        text = "You have to swap card by card",
-        html = TRUE,
-        type = "error",
-        showConfirmButton = TRUE,
-        timer = 0,
-        imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
-        imageWidth = 400,
-        imageHeight = 400,
-        animation = TRUE
-      )
-    } else{
-      # Make sure Players have to swap at least 2 Cards
-      if (length(vals[[number]]) < 2) {
-        shinyalert::shinyalert(
-          title = "Error",
-          text = "You have to swap at least 2 Cards",
-          html = TRUE,
-          type = "error",
-          showConfirmButton = TRUE,
-          timer = 0,
-          imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
-          imageWidth = 400,
-          imageHeight = 400,
-          animation = TRUE
+  }
+
+  # Make sure Players can only swap card by card
+  else if (length(vals[[number]]) != length(mar[[number]])) {
+    shinyalert::shinyalert(
+      title = "Error",
+      text = "You have to swap card by card",
+      html = TRUE,
+      type = "error",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
+  }
+
+  # Make sure Players have to swap at least 2 Cards
+  else if (length(vals[[number]]) < 2) {
+    shinyalert::shinyalert(
+      title = "Error",
+      text = "You have to swap at least 2 Cards",
+      html = TRUE,
+      type = "error",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
+  } else {
+    # normal swapping, chosen cards are put into market and hands
+    cards$market[which(cards$market %in% mar[[number]])
+                 [1:length(vals[[number]])]] <- vals[[number]]
+
+    cards$hands[[number]][which(cards$hands[[number]] %in% vals[[number]])
+                          [1:length(mar[[number]])]] <-
+      mar[[number]]
+
+    # Success message
+    shinyalert::shinyalert(
+      title = "Success",
+      text = HTML(
+        paste(
+          cards$names[[number]],
+          "Your swap was successful, <br> now it is",
+          ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
+          "'s turn"
         )
-      } else{
-        # normal swapping, chosen cards are put into market and hands
-        cards$market[which(cards$market %in% mar[[number]])
-                     [1:length(vals[[number]])]] <- vals[[number]]
+      ),
+      html = TRUE,
+      type = "success",
+      showConfirmButton = TRUE,
+      timer = 0,
+      imageUrl = "https://giftsforcardplayers.com/wp-content/uploads/2017/09/card-game-941430_960_720.jpg",
+      imageWidth = 400,
+      imageHeight = 400,
+      animation = TRUE
+    )
 
-        cards$hands[[number]][which(cards$hands[[number]] %in% vals[[number]])
-                              [1:length(mar[[number]])]] <-
-          mar[[number]]
+    # Update the TabsetPanel, to the intermediate Panel
+    updateTabsetPanel(session = parent_session,
+                      "inTabset", selected = "Next Player")
 
-        # Success message
-        shinyalert::shinyalert(
-          title = "Success",
-          text = HTML(
-            paste(
-              cards$names[[number]],
-              "Your swap was successful, <br> now it is",
-              ifelse(number == 1, cards$names[[2]], cards$names[[1]]),
-              "'s turn"
-            )
-          ),
-          html = TRUE,
-          type = "success",
-          showConfirmButton = TRUE,
-          timer = 0,
-          imageUrl = "https://giftsforcardplayers.com/wp-content/uploads/2017/09/card-game-941430_960_720.jpg",
-          imageWidth = 400,
-          imageHeight = 400,
-          animation = TRUE
-        )
+    cards$action_text <-
+      paste(cards$names[[number]], "swapped",
+            mar[[number]],
+            "with",
+            vals[[number]], ".")
 
-        # Update the TabsetPanel, to the intermediate Panel
-        updateTabsetPanel(session = parent_session,
-                          "inTabset", selected = "Next Player")
+    # Update variables for plotting players input
+    cards$last_swap <-
+      c(input$hand_player_1, input$hand_player_2)
+    cards$last_action <-
+      c(input$market_player_1, input$market_player_2)
 
-        cards$action_text <-
-          paste(cards$names[[number]], "swapped",
-                mar[[number]],
-                "with",
-                vals[[number]], ".")
-
-        # Update variables for plotting players input
-        cards$last_swap <-
-          c(input$hand_player_1, input$hand_player_2)
-        cards$last_action <-
-          c(input$market_player_1, input$market_player_2)
-
-      }
-    }
   }
 }
+
+
