@@ -56,9 +56,10 @@ taking <- function(input, output, cards, number, parent_session) {
         "Camel, now it is your turn",
         ifelse(number == 1, cards$names[[2]], cards$names[[1]])
       )
+  }
 
-    # If the Player's do not take a Camel
-  } else if (length(mar[[number]]) != 1) {
+  # If the Player's do not take a Camel
+  else if (length(mar[[number]]) != 1) {
     # Errormessage if they try to take several Cards
     shinyalert::shinyalert(
       title = "Error",
@@ -67,14 +68,14 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/
-        06/allowed-featured.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
     )
-    # Make sure Player's only carry seven cards
-  } else if ((length(cards$hands[[number]]) >= 7)) {
+  }
+  # Make sure Player's only carry seven cards
+  else if ((length(cards$hands[[number]]) >= 7)) {
     # Errormessage if they already carry 7 Cards
     shinyalert::shinyalert(
       title = "Error",
@@ -172,17 +173,18 @@ selling <- function(input, output, cards, number, parent_session) {
       animation = TRUE
     )
 
-    # Make sure players must at least sell two goods of silver, gold, or diamond
+    # Make sure players must at least sell two of silver, gold, diamond
   } else if ((vals[[number]][1] == "Silver" |
               vals[[number]][1] == "Gold" |
               vals[[number]][1] == "Diamond") &
              length(vals[[number]]) == 1) {
-    # Errormessage if they try to sell 1 of Gold/Diamonds/Silver
+
+    # Errormessage if they try to sell 1
     shinyalert::shinyalert(
       title = "Error",
       text = HTML(
         "You have to sell more than 1 <br>
-        from the precious goods like <br> Silver"
+        from the precious goods <br> Silver, Diamond and Gold"
       ),
       html = TRUE,
       type = "error",
