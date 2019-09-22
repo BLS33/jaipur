@@ -265,7 +265,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://i.pinimg.com/originals/c7/8f/5f/c78f5ff94da025c552d2a1f0fc0ab82d.jpg",
+      imageUrl = system.file("images/Gold.jpg", "jaipur"),
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
