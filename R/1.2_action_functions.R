@@ -38,7 +38,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Camel.jpg",
+      imageUrl = "https://media-cdn.tripadvisor.com/media/photo-s/0d/d3/a7/aa/each-camel-with-their.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -68,7 +68,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -85,7 +85,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -124,7 +124,7 @@ taking <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Take_cards.jpg",
+      imageUrl = "https://images-na.ssl-images-amazon.com/images/I/81i4E15iulL._SL1500_.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -167,7 +167,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -190,7 +190,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -206,7 +206,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -265,7 +265,7 @@ selling <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Gold.jpg",
+      imageUrl = "https://i.pinimg.com/originals/c7/8f/5f/c78f5ff94da025c552d2a1f0fc0ab82d.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -312,7 +312,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -328,7 +328,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -344,7 +344,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "error",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/No.jpg",
+      imageUrl = "https://babygizmo.com/wp-content/uploads/2018/06/allowed-featured.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -373,7 +373,7 @@ swapping <- function(input, output, cards, number, parent_session) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Swap_cards.jpg",
+      imageUrl = "https://images-na.ssl-images-amazon.com/images/I/81i4E15iulL._SL1500_.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE

@@ -57,7 +57,7 @@ game_over_cards <- function(input, output, cards) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Maharaja.jpg",
+      imageUrl = "https://amp.businessinsider.com/images/5c1d1321404f4d3f1d190694-750-563.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
@@ -127,7 +127,7 @@ game_over_tokens <- function(input, output, cards) {
       type = "success",
       showConfirmButton = TRUE,
       timer = 0,
-      imageUrl = "https://raw.githubusercontent.com/BLS33/jaipur/master/inst/images/Maharaja.jpg",
+      imageUrl = "https://amp.businessinsider.com/images/5c1d1321404f4d3f1d190694-750-563.jpg",
       imageWidth = 400,
       imageHeight = 400,
       animation = TRUE
